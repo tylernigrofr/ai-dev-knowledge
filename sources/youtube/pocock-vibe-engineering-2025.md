@@ -19,6 +19,15 @@ concepts_seeded:
   - doc-rot
   - three-route-prototype
   - ubiquitous-language
+  - prd-discipline
+  - kanban-over-phases
+  - tdd-for-afk
+  - feedback-loop-ceiling
+  - design-interfaces-delegate-implementation
+  - own-your-planning-stack
+  - subagents-as-delegation
+  - pre-ai-fundamentals
+  - sand-castle-parallelization
 ---
 
 # Vibe-Coding to Vibe-Engineering
@@ -41,20 +50,20 @@ Matt Pocock's workshop talk on practical AI-driven engineering workflows. Source
 
 - **Specs-to-code regen loop doesn't work.** Code is the battleground; you need eyes on it. What you want is a *shared design concept* (Brooks, *The Design of Design*).
 - **Grilling skill.** A tiny prompt that interviews you relentlessly, one question at a time, with a recommended answer for each. 40–100 questions per session. The conversation history is the alignment artifact. → `concepts/grilling-alignment.md`
-- **Don't review your own PRD.** You aligned during grilling. Reading the summary tests nothing. LLMs are good at summarization.
-- **PRDs need an out-of-scope section** to capture negative decisions (the definition of done).
+- **Don't review your own PRD.** You aligned during grilling. Reading the summary tests nothing. LLMs are good at summarization. → `concepts/prd-discipline.md`
+- **PRDs need an out-of-scope section** to capture negative decisions (the definition of done). → `concepts/prd-discipline.md`
 
 ### Decomposition
 
-- **Kanban over multi-phase plans.** Phase plans serialize work; kanban with a DAG enables parallelism. → (concept covered indirectly via `vertical-slices` + ralph-loop)
+- **Kanban over multi-phase plans.** Phase plans serialize work; kanban with a DAG enables parallelism. → `concepts/kanban-over-phases.md`
 - **Vertical slices / tracer bullets, not horizontal layers.** AI loves DB → API → frontend; you get zero feedback until phase 3. Vertical slices give a working flow on day one. → `concepts/vertical-slices.md`
 - **AFK vs human-in-the-loop tagging.** Tag each issue. AFK = delegate-able overnight; HITL = needs your judgment. → `concepts/afk-vs-hitl.md`
 
 ### Implementation
 
 - **Ralph loop.** A simple bash loop: read open issues, last N commits, run agent with accept-edits, prompt picks next AFK task, uses TDD, runs feedback loops, commits, summarizes. → `concepts/ralph-loop.md`
-- **TDD is non-negotiable for AFK work.** A red-green-refactor skill prevents the AI from cheating tests.
-- **Feedback-loop quality is the ceiling on AI output.** Bad type errors, slow tests, flaky assertions all directly cap quality.
+- **TDD is non-negotiable for AFK work.** A red-green-refactor skill prevents the AI from cheating tests. → `concepts/tdd-for-afk.md`
+- **Feedback-loop quality is the ceiling on AI output.** Bad type errors, slow tests, flaky assertions all directly cap quality. → `concepts/feedback-loop-ceiling.md`
 
 ### Review
 
@@ -67,7 +76,7 @@ Matt Pocock's workshop talk on practical AI-driven engineering workflows. Source
 ### Codebase shape
 
 - **Deep modules > shallow modules** (Ousterhout). Small interface, lots inside. Lets you draw clean test boundaries; shallow modules force mocking hell. → `concepts/deep-modules.md`
-- **Design module interfaces yourself; delegate the implementation.** Keeps your mental map intact while letting the AI move fast inside the gray boxes.
+- **Design module interfaces yourself; delegate the implementation.** Keeps your mental map intact while letting the AI move fast inside the gray boxes. → `concepts/design-interfaces-delegate-implementation.md`
 
 ### Front-end
 
@@ -76,8 +85,9 @@ Matt Pocock's workshop talk on practical AI-driven engineering workflows. Source
 ### Misc
 
 - **Doc rot is real.** Closed PRDs in the repo get found by future agents and used as authoritative after the code has diverged. Pocock closes GitHub issues rather than keeping markdown PRDs in the repo. → `concepts/doc-rot.md`
-- **Don't over-optimize the PRD.** The juice is in QA, not PRD perfection.
-- **Don't outsource your planning stack.** Owning skills/prompts/loops means observability when things break.
+- **Don't over-optimize the PRD.** The juice is in QA, not PRD perfection. → `concepts/prd-discipline.md`
+- **Don't outsource your planning stack.** Owning skills/prompts/loops means observability when things break. → `concepts/own-your-planning-stack.md`
 - **Ubiquitous language doc** (`CONTEXT.md`, à la Eric Evans / DDD). Defines the project's jargon. Updated by `/grill-with-docs`. → `concepts/ubiquitous-language.md`
-- **Subagents are delegation.** Burn their own tokens in isolated context, return summaries. Use aggressively for exploration.
-- **Buy old software-engineering books.** Pre-AI writing on modularity, tracer bullets, refactoring, pragmatic programming maps almost perfectly onto AI workflows.
+- **Subagents are delegation.** Burn their own tokens in isolated context, return summaries. Use aggressively for exploration. → `concepts/subagents-as-delegation.md`
+- **Buy old software-engineering books.** Pre-AI writing on modularity, tracer bullets, refactoring, pragmatic programming maps almost perfectly onto AI workflows. → `concepts/pre-ai-fundamentals.md`
+- **Sand Castle parallelization.** Planner + sandboxed implementers + reviewers + merger over a live kanban board. → `concepts/sand-castle-parallelization.md`

@@ -1,28 +1,54 @@
 ---
-title: Three-route throwaway prototype (front-end)
+title: Throwaway prototype (logic vs UI bifurcation)
 type: technique
 phase: [planning, implementation]
-tags: [frontend, prototyping, multimodal-blindness]
-sources: [sources/youtube/pocock-vibe-engineering-2025.md]
+tags: [frontend, prototyping, multimodal-blindness, state-machine, logic]
+sources:
+  - sources/youtube/pocock-vibe-engineering-2025.md
+  - sources/repos/pocock-skills.md
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
 ---
 
 ## Summary
-For UI work in mature codebases, don't try to one-shot a polished design — scaffold three throwaway routes with variant designs, click between them, pick what works, then grill the real implementation.
+A prototype is throwaway code that answers a question, and the question decides the shape — for "what should this look like?" build several radically different UI variants on a single switchable route; for "does this logic / state model feel right?" build a tiny interactive terminal app that pushes the state machine through hard-to-reason-about cases.
 
 ## Why it matters
-AI is multimodal-blind on visual judgment. It can produce plausible UI code but cannot tell you which of three options actually feels right. The throwaway-routes pattern moves the visual judgment to a human (you), where it belongs, while still letting the AI generate the variants. Picking from three concrete options is dramatically more productive than describing what you want in words.
+AI is multimodal-blind on visual judgment, so for UI work it can't tell you which option feels right — but humans pick from three concrete variants dramatically faster than they describe what they want in words. For logic and state-model questions, paper reasoning is unreliable and tests too rigid; an interactive terminal app lets you push edge cases by hand and see the resulting state. The two prototype shapes answer different questions; getting the branch wrong wastes the prototype.
 
 ## How to apply
-- Ask for three variants at routes like `/proto-a`, `/proto-b`, `/proto-c`.
-- Make them genuinely different in approach (layout, density, interaction model), not minor color/spacing variations.
-- Click through, pick the winner, screenshot if useful.
-- Feed the chosen variant into a `/grill-with-docs` session for the real implementation. Discard the other two.
+
+**Pick the branch first.** Identify the question being answered:
+
+- "Does this logic / state model feel right?" → **logic prototype** (terminal app).
+- "What should this look like?" → **UI prototype** (multi-variant route).
+
+If the question is genuinely ambiguous and the user isn't reachable, default to whichever branch matches the surrounding code (backend module → logic; page/component → UI) and state the assumption at the top of the prototype.
+
+**UI branch.**
+- Three variants on routes like `/proto-a`, `/proto-b`, `/proto-c`, switchable via URL search param + a floating bottom bar.
+- Genuinely different approaches (layout, density, interaction model), not minor color/spacing variations.
+- Click through, pick a winner, feed it into `/grill-with-docs` for the real implementation. Discard the others.
+
+**Logic branch.**
+- Tiny interactive terminal app run via the project's existing task runner (`pnpm <name>`, `bun <path>`).
+- State in memory only — no persistence (persistence is the thing the prototype is *checking*, not depending on).
+- After every action, print the full relevant state so changes are visible.
+- Push the state machine through cases that are hard to reason about on paper.
+
+**Rules that apply to both branches.**
+1. Throwaway from day one and *clearly marked as such*. Locate close to where it'll be used so context is obvious.
+2. One command to run, using the project's existing task runner.
+3. No tests, no error handling beyond runnable, no abstractions. Skip polish.
+4. The *answer* is the only durable output. Capture in commit message / ADR / `NOTES.md` next to the prototype.
+5. Delete or absorb when done. Don't leave it rotting in the repo.
 
 ## Caveats
-- For greenfield UIs without an existing codebase, more iterations may be valuable; the pattern is specifically for mature codebases where a polished one-shot is unlikely to fit existing conventions.
+- For greenfield UIs without existing conventions, more iterations may be valuable.
+- Logic prototypes can degenerate into a "second implementation" — keep them ruthlessly minimal.
 
 ## Related
 - [grilling-alignment](grilling-alignment.md) — what happens after you pick
+- [doc-rot](doc-rot.md) — why prototypes must be deleted, not promoted
+- [adr-discipline](adr-discipline.md) — where the prototype's answer might land
