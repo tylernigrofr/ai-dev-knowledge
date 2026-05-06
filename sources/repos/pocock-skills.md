@@ -15,6 +15,13 @@ concepts_seeded:
   - three-route-prototype
   - deep-modules
   - grilling-alignment
+  - mock-at-boundaries
+  - design-it-twice
+  - dependency-categories
+  - agent-brief-format
+  - out-of-scope-knowledge-base
+  - tdd-for-afk
+  - integration-testing-bias
 ---
 
 # mattpocock/skills

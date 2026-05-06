@@ -1,6 +1,6 @@
 # Index
 
-_Last generated: 2026-05-06_
+_Last generated: 2026-05-06 (rev 2)_
 
 ## Playbooks
 
@@ -26,6 +26,8 @@ _Last generated: 2026-05-06_
 - [ADR discipline (offer sparingly)](concepts/adr-discipline.md) — Only when hard-to-reverse + surprising + real trade-off.
 - [Integration testing bias for AI work](concepts/integration-testing-bias.md) — Test through grey-box interfaces, not unit-level inside.
 - [Just-in-time AI-generated docs](concepts/just-in-time-docs.md) — Regenerate from code on demand; don't commit drift-prone markdown.
+- [Mock at system boundaries only](concepts/mock-at-boundaries.md) — SDK-style external interfaces; never mock internal collaborators.
+- [Dependency categories for deepening](concepts/dependency-categories.md) — In-process / local-substitutable / remote-owned / true external dictate test strategy.
 
 ### Techniques
 - [AFK vs human-in-the-loop tagging](concepts/afk-vs-hitl.md) — Tag every issue as delegate-able or judgment-needed.
@@ -35,6 +37,9 @@ _Last generated: 2026-05-06_
 - [Subagents as delegation](concepts/subagents-as-delegation.md) — Isolated context, summary return; protects the smart zone.
 - [Zoom out for unfamiliar code](concepts/zoom-out.md) — Force a breadth-first map of modules in domain-glossary vocabulary.
 - [Handoff documents](concepts/handoff-docs.md) — Bridge fresh sessions across context resets without duplicating durable artifacts.
+- [Design it twice (parallel sub-agent interface design)](concepts/design-it-twice.md) — Spawn 3+ sub-agents with divergent constraints; compare and pick (or hybridize).
+- [Agent brief format](concepts/agent-brief-format.md) — Durable, behavioral contract posted at `ready-for-agent`.
+- [Out-of-scope knowledge base](concepts/out-of-scope-knowledge-base.md) — `.out-of-scope/<concept>.md` files preserve rejection reasoning and dedupe future requests.
 
 ### Workflows
 - [Ralph loop (AFK implementation)](concepts/ralph-loop.md) — Bash loop that picks the next AFK issue and runs an agent on it.
@@ -72,6 +77,8 @@ _Last generated: 2026-05-06_
 - [Kanban over phases](concepts/kanban-over-phases.md)
 - [Triage state machine](concepts/triage-state-machine.md)
 - [ADR discipline](concepts/adr-discipline.md)
+- [Agent brief format](concepts/agent-brief-format.md)
+- [Out-of-scope knowledge base](concepts/out-of-scope-knowledge-base.md)
 
 ### implementation
 - [Smart zone vs dumb zone](concepts/smart-zone-vs-dumb-zone.md)
@@ -93,6 +100,9 @@ _Last generated: 2026-05-06_
 - [Diagnose loop](concepts/diagnose-loop.md)
 - [Zoom out](concepts/zoom-out.md)
 - [Handoff docs](concepts/handoff-docs.md)
+- [Mock at boundaries](concepts/mock-at-boundaries.md)
+- [Design it twice](concepts/design-it-twice.md)
+- [Dependency categories](concepts/dependency-categories.md)
 
 ### review
 - [Smart zone vs dumb zone](concepts/smart-zone-vs-dumb-zone.md)
@@ -131,6 +141,8 @@ _Last generated: 2026-05-06_
 ### architecture
 - [Deep modules over shallow modules](concepts/deep-modules.md)
 - [Design interfaces, delegate implementation](concepts/design-interfaces-delegate-implementation.md)
+- [Design it twice](concepts/design-it-twice.md)
+- [Dependency categories](concepts/dependency-categories.md)
 
 ### parallelization
 - [Kanban over phases](concepts/kanban-over-phases.md)
@@ -154,10 +166,14 @@ _Last generated: 2026-05-06_
 - [Integration testing bias](concepts/integration-testing-bias.md)
 - [TDD for AFK](concepts/tdd-for-afk.md)
 - [Feedback-loop ceiling](concepts/feedback-loop-ceiling.md)
+- [Mock at boundaries](concepts/mock-at-boundaries.md)
+- [Dependency categories](concepts/dependency-categories.md)
 
 ### triage
 - [Triage state machine](concepts/triage-state-machine.md)
 - [AFK vs HITL](concepts/afk-vs-hitl.md)
+- [Agent brief format](concepts/agent-brief-format.md)
+- [Out-of-scope knowledge base](concepts/out-of-scope-knowledge-base.md)
 
 (other tags collapsed to misc — regenerate via `/build-index` for full breakdown)
 
