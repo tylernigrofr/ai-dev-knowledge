@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(mkdir -p _inbox/drops _inbox/_processed sources/youtube sources/articles sources/papers sources/repos sources/social concepts playbooks skills .schemas .claude)",
+      "Bash(touch _inbox/drops/.gitkeep _inbox/_processed/.gitkeep sources/youtube/.gitkeep sources/articles/.gitkeep sources/papers/.gitkeep sources/repos/.gitkeep sources/social/.gitkeep concepts/.gitkeep playbooks/.gitkeep skills/.gitkeep .schemas/.gitkeep .claude/.gitkeep)",
+      "Bash(git commit *)"
+    ]
+  }
+}
