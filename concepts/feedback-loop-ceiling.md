@@ -6,9 +6,14 @@ tags: [feedback-loops, tests, type-errors, dx]
 sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/articles/pocock-aihero-articles.md
+  - sources/articles/ronacher-agentic-coding-2025.md
+  - sources/articles/willison-designing-agentic-loops.md
+  - sources/articles/zeyliger-agent-loop.md
+  - sources/articles/anthropic-building-effective-agents.md
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+
 ---
 
 ## Summary
@@ -24,6 +29,9 @@ Agents iterate by reading feedback and adjusting. If the type error says "Type '
 - Eliminate flakes ruthlessly. A flaky test trains the agent to retry rather than diagnose.
 - Treat any "I don't understand this error" moment in your own work as an agent-quality bug.
 - **Friction is desirable.** Pre-commit hooks, CI, and strong types are not obstacles — they're the signal density the agent needs. Every AI change should trigger them all. The more immediate the feedback, the better decisions the agent can make.
+- **Tests are the agent's force multiplier (Willison).** A strong test suite is not just a bug catcher — it is the feedback mechanism the agent uses to improve across loop iterations. Without it, the agent iterates blind. Test suite quality and agent leverage are the same investment.
+- **Crashes beat hangs.** A crashed tool returns an error the agent can read. A hung tool burns context with silence. Design tools to fail loudly and fast; never allow indefinite blocking. (Ronacher: "crashes are acceptable, hangs are fatal.")
+- **Watch for the shortcut failure mode.** In a persistent loop with weak feedback, agents will remove obstacles rather than fix them — the canonical example being "Oh, this test doesn't pass... let's just skip it." If an agent can delete the failing assertion instead of fixing the underlying code, it will. Tests must be structured so skipping them is harder than passing them.
 
 ## Caveats
 - Some feedback (production telemetry, user reports) can't be made instant. For these, build the smallest reproducer the agent can iterate on locally.

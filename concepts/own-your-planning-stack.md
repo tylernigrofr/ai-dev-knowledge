@@ -3,7 +3,9 @@ title: Own your planning stack (don't outsource to frameworks)
 type: principle
 phase: [planning, implementation]
 tags: [tooling, observability, framework-lock-in]
-sources: [sources/youtube/pocock-vibe-engineering-2025.md]
+sources:
+  - sources/youtube/pocock-vibe-engineering-2025.md
+  - sources/articles/anthropic-building-effective-agents.md
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
@@ -25,6 +27,7 @@ The pipeline *is* the product when you're doing AI engineering. If a third-party
 ## Caveats
 - This applies to your *planning/orchestration* layer. For genuinely commodity infrastructure (LLM SDK, vector DB client) frameworks are fine.
 - Solo experimentation can use a framework; don't ship a team workflow on one.
+- Anthropic's engineering team independently validates this: agent frameworks "often create extra layers of abstraction that can obscure the underlying prompts and responses, making them harder to debug," and "incorrect assumptions about what's under the hood are a common source of customer error." Their recommendation: start with direct LLM API calls — "many patterns can be implemented in a few lines of code."
 
 ## Related
 - [ralph-loop](ralph-loop.md) — the kind of loop you should own

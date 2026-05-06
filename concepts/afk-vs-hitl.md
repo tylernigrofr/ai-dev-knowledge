@@ -3,7 +3,9 @@ title: AFK vs human-in-the-loop tagging
 type: technique
 phase: [decomposition]
 tags: [delegation, tagging, kanban]
-sources: [sources/youtube/pocock-vibe-engineering-2025.md]
+sources:
+  - sources/youtube/pocock-vibe-engineering-2025.md
+  - sources/articles/willison-designing-agentic-loops.md
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
@@ -18,6 +20,7 @@ Without explicit tagging, you either over-delegate (agents make decisions that n
 ## How to apply
 - Add `mode: afk | human-in-loop` to every issue's frontmatter.
 - Default to HITL; require justification to mark AFK (clear acceptance criteria, no ambiguous design questions, well-bounded scope).
+- **Variation-heavy signal (Willison):** if your gut reaction to a task is "ugh, I'm going to have to try a lot of variations here" — debugging, perf tuning, dependency upgrades — that's a strong AFK indicator. Repetitive iteration with automated feedback = agent's home turf.
 - The Ralph loop only picks issues with `mode: afk`.
 - Re-tag freely as you learn — issues that the night shift keeps tripping over should be flipped to HITL.
 

@@ -6,6 +6,7 @@ tags: [tdd, red-green-refactor, afk, test-cheating, horizontal-slicing]
 sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/repos/pocock-skills.md
+  - sources/articles/anthropic-claude-code-best-practices.md
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
@@ -28,6 +29,16 @@ LLMs love post-hoc tests because they're trained on examples where tests confirm
 - After GREEN, scan for refactor candidates: duplication → extract; long methods → private helpers (keep tests on the public interface); shallow modules → deepen; feature envy → move logic to where data lives; primitive obsession → value objects.
 - Pair with a clean-context reviewer that checks: did the test exist in commit N before the implementation in commit N+1?
 - Bake this into the Ralph loop prompt — every AFK issue runs through it.
+
+### Verification beyond tests
+
+Anthropic's framing generalizes TDD's insight: *give the agent a machine-checkable success criterion and performance improves dramatically.* For UI work that insight means screenshot verification, not just tests. Concrete patterns:
+- Spec + concrete test cases in the prompt instead of vague task descriptions
+- "Take a screenshot, compare to the original, list differences, fix them" for UI changes
+- Pipe actual error output; require the fix to pass, not suppress the error
+- Any Bash command that produces a checkable exit code qualifies
+
+Without a success criterion, the model produces plausible-looking output and the human becomes the only feedback loop.
 
 ## Caveats
 - Pure refactors (no behavior change) are exempt; existing tests cover them.
