@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Playbook frontmatter",
+  "type": "object",
+  "required": ["title", "phase", "tags", "concepts_used", "status", "last_reviewed"],
+  "properties": {
+    "title": { "type": "string" },
+    "phase": {
+      "type": "array",
+      "items": { "enum": ["planning", "decomposition", "implementation", "review", "qa"] }
+    },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "concepts_used": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "tools": { "type": "array", "items": { "type": "string" } },
+    "status": { "enum": ["draft", "stable", "contested", "deprecated"] },
+    "last_reviewed": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

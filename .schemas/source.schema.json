@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source frontmatter",
+  "type": "object",
+  "required": ["title", "type", "captured", "status"],
+  "properties": {
+    "title": { "type": "string" },
+    "type": { "enum": ["youtube", "article", "paper", "repo", "social", "other"] },
+    "url": { "type": "string" },
+    "author": { "type": "string" },
+    "published": { "type": "string", "format": "date" },
+    "captured": { "type": "string", "format": "date" },
+    "status": { "enum": ["raw", "extracted", "superseded"] },
+    "concepts_seeded": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
