@@ -19,10 +19,28 @@ Curated, lean knowledge base of state-of-the-art AI-driven development practices
 
 ## How to use it (agent, from another project)
 
-1. Ensure `AI_KB_PATH` is set in your shell to this repo's absolute path.
-2. In your project's `CLAUDE.md`, add:
-   > AI dev best practices live at `$AI_KB_PATH/`. Search `concepts/` and `playbooks/` by frontmatter tag/type/phase. Use the `kb-search` skill if installed.
-3. Optionally copy or symlink `skills/kb-search.md` and `skills/kb-pull.md` into your project's `.claude/skills/`.
+### Recommended: install as a Claude Code plugin
+
+This repo ships a `.claude-plugin/plugin.json` so Claude Code can load it globally.
+
+1. Set `AI_KB_PATH` to this repo's absolute path (so the skills can locate the KB content):
+   ```powershell
+   [Environment]::SetEnvironmentVariable("AI_KB_PATH", "$env:USERPROFILE\OneDrive\Documents\GitHub\ai-dev-knowledge", "User")
+   ```
+2. In Claude Code, install the plugin from this local path (or the GitHub URL):
+   ```
+   /plugin install <path-to-this-repo>
+   ```
+3. Add 1–2 lines to your global `~/.claude/CLAUDE.md`:
+   > AI dev best practices KB is installed as a plugin. Before non-trivial planning or context-heavy work, call `kb-search` to find relevant concepts/playbooks, then `kb-pull` for full content. Pull on demand — don't preload.
+
+You'll get the `kb-search` / `kb-pull` skills (auto-invoked when relevant) plus `/kb-search`, `/kb-pull`, `/triage-inbox`, `/add-source`, `/distill-concept`, `/build-index` slash commands available in every project.
+
+Context cost is negligible — only skill names + descriptions load upfront; concept/playbook bodies are pulled on demand.
+
+### Alternative: manual symlink
+
+If you don't want the plugin: symlink `skills/kb-search.md` and `skills/kb-pull.md` into `~/.claude/skills/` and add the same global CLAUDE.md pointer.
 
 ## Spec & design
 
