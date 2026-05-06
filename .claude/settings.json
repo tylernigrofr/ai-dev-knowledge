@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/settings.schema.json",
+  "permissions": {
+    "allow": [
+      "Read(concepts/**)",
+      "Read(playbooks/**)",
+      "Read(sources/**)",
+      "Read(_inbox/**)",
+      "Read(.schemas/**)",
+      "Read(CONTEXT.md)",
+      "Read(README.md)",
+      "Read(INDEX.md)",
+      "Edit(concepts/**)",
+      "Edit(playbooks/**)",
+      "Edit(sources/**)",
+      "Edit(_inbox/**)",
+      "Edit(INDEX.md)",
+      "Write(concepts/**)",
+      "Write(playbooks/**)",
+      "Write(sources/**)",
+      "Write(_inbox/**)",
+      "Write(INDEX.md)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(mv:*)",
+      "Bash(rm _inbox/**)"
+    ]
+  }
+}
