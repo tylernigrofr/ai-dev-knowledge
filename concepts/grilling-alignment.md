@@ -16,6 +16,7 @@ referenced_by:
   - concept:doc-rot
   - concept:prd-discipline
   - concept:pre-ai-fundamentals
+  - concept:systems-thinking-three-questions
   - concept:three-route-prototype
   - concept:triage-state-machine
 audience: [planner]

@@ -10,6 +10,7 @@ status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
 referenced_by:
+  - concept:llm-not-a-trustworthy-abstraction
   - concept:strategic-programming
 audience: [planner, implementer]
 activate_when: "Need to answer a state-machine or UI design question before committing."

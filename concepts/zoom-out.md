@@ -9,6 +9,7 @@ superseded_by: null
 last_reviewed: 2026-05-06
 referenced_by:
   - concept:just-in-time-docs
+  - concept:systems-thinking-three-questions
 audience: [planner, implementer]
 activate_when: "Entering an unfamiliar area of code and need a map first."
 cluster: context-management

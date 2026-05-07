@@ -11,6 +11,7 @@ superseded_by: null
 last_reviewed: 2026-05-06
 referenced_by:
   - concept:compacting-vs-clearing
+  - concept:llm-not-a-trustworthy-abstraction
   - concept:push-vs-pull-context
   - concept:ralph-loop
   - concept:sand-castle-parallelization

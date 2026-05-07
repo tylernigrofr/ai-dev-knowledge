@@ -22,6 +22,7 @@ referenced_by:
   - concept:mock-at-boundaries
   - concept:pre-ai-fundamentals
   - concept:strategic-programming
+  - concept:systems-thinking-three-questions
   - concept:ubiquitous-language
 audience: [implementer, reviewer]
 activate_when: "Designing or refactoring module boundaries."

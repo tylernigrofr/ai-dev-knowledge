@@ -24,6 +24,7 @@ referenced_by:
   - concept:error-compounding-in-agents
   - concept:generate-over-depend
   - concept:integration-testing-bias
+  - concept:jagged-frontier
   - concept:llm-as-judge-evals
   - concept:ralph-loop
   - concept:tdd-for-afk

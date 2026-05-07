@@ -11,6 +11,8 @@ referenced_by:
   - concept:deep-modules
   - concept:design-it-twice
   - concept:generate-over-depend
+  - concept:jagged-frontier
+  - concept:llm-not-a-trustworthy-abstraction
   - concept:strategic-programming
 audience: [planner, implementer, reviewer]
 activate_when: "Looking for grounding in classical software-engineering thinking behind AI practices."
