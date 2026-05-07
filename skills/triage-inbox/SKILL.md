@@ -66,5 +66,5 @@ After the batch, output a triage report covering:
 ## Caveats
 
 - Run incrementally. A 50-drop inbox in one session will exceed the smart zone — process in batches of ~10.
-- After triage, run `build-index` to refresh `INDEX.md`.
+- After triage, run `rebuild-frontmatter` to refresh `referenced_by` across concepts.
 - If a drop is clearly mis-categorized, fix the classification rather than forcing it through.

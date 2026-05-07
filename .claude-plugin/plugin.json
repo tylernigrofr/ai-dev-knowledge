@@ -1,7 +1,7 @@
 {
   "name": "ai-dev-knowledge",
   "version": "0.1.0",
-  "description": "Curated knowledge base of AI-driven development practices. Provides kb-search/kb-pull skills for on-demand context retrieval, plus slash commands for KB maintenance (triage-inbox, distill-concept, add-source, build-index).",
+  "description": "Curated knowledge base of AI-driven development practices. Provides kb-search/kb-pull skills for on-demand context retrieval, plus KB maintenance skills (triage-inbox, distill-concept, add-source, rebuild-frontmatter) — each also invocable as a slash command of the same name.",
   "author": {
     "name": "Tyler Nigro",
     "url": "https://github.com/tylernigrofr/ai-dev-knowledge"

@@ -7,6 +7,10 @@ sources: [sources/repos/pocock-skills.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by: []
+audience: [planner, implementer]
+activate_when: "Ending a session or about to clear context."
+cluster: context-management
 ---
 
 ## Summary

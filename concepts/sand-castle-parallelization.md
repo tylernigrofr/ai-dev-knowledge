@@ -7,6 +7,12 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:agent-loop-simplicity
+  - concept:kanban-over-phases
+audience: [planner]
+activate_when: "Multiple unblocked AFK issues exist and a sequential loop is bottlenecking."
+cluster: afk-loops
 ---
 
 ## Summary

@@ -7,6 +7,14 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:deep-modules
+  - concept:design-it-twice
+  - concept:generate-over-depend
+  - concept:strategic-programming
+audience: [planner, implementer, reviewer]
+activate_when: "Looking for grounding in classical software-engineering thinking behind AI practices."
+cluster: pre-ai-foundations
 ---
 
 ## Summary

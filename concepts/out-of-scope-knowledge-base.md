@@ -8,6 +8,10 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by: []
+audience: [planner]
+activate_when: "Closing a feature request as wontfix and want the reasoning preserved."
+cluster: kb-curation
 ---
 
 ## Summary

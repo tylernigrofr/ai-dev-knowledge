@@ -9,6 +9,18 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:compacting-vs-clearing
+  - concept:push-vs-pull-context
+  - concept:ralph-loop
+  - concept:sand-castle-parallelization
+  - concept:smart-zone-vs-dumb-zone
+  - concept:subagents-as-delegation
+  - concept:tdd-for-afk
+  - playbook:afk-night-shift
+audience: [reviewer, planner]
+activate_when: "Setting up review for agent-produced changes."
+cluster: review-gates
 ---
 
 ## Summary

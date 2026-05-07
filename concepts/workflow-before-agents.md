@@ -8,6 +8,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:aci-tool-design
+audience: [planner, implementer]
+activate_when: "Tempted to build an autonomous agent before trying simpler patterns."
+cluster: agent-skill-design
 ---
 
 ## Summary

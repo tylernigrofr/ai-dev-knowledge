@@ -9,6 +9,17 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:agent-brief-format
+  - concept:agent-sandbox-isolation
+  - concept:kanban-over-phases
+  - concept:sand-castle-parallelization
+  - concept:triage-state-machine
+  - concept:vertical-slices
+  - playbook:afk-night-shift
+audience: [planner]
+activate_when: "Triaging issues for delegation to agents vs human judgment."
+cluster: afk-loops
 ---
 
 ## Summary

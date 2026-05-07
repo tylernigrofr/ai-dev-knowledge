@@ -9,6 +9,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-07
+referenced_by:
+  - concept:deep-modules
+audience: [implementer]
+activate_when: "Designing error handling or harness behavior."
+cluster: decomposition
 ---
 
 ## Summary

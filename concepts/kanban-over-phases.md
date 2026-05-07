@@ -7,6 +7,12 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:sand-castle-parallelization
+  - concept:triage-state-machine
+audience: [planner]
+activate_when: "Decomposing a PRD into work for one or many agents."
+cluster: decomposition
 ---
 
 ## Summary

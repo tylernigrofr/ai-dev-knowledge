@@ -11,7 +11,15 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
-
+referenced_by:
+  - concept:clean-context-reviewer
+  - concept:compacting-vs-clearing
+  - concept:handoff-docs
+  - concept:subagents-as-delegation
+  - playbook:afk-night-shift
+audience: [planner, implementer]
+activate_when: "Deciding when to clear context, split work, or delegate to a subagent."
+cluster: context-management
 ---
 
 ## Summary

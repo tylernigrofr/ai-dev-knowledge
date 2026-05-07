@@ -8,6 +8,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:llm-as-judge-evals
+audience: [implementer, reviewer]
+activate_when: "Designing or operating multi-step stateful agents in production."
+cluster: afk-loops
 ---
 
 ## Summary

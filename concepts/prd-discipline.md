@@ -7,6 +7,12 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:agent-brief-format
+  - concept:grilling-alignment
+audience: [planner]
+activate_when: "Writing or reviewing a post-grilling PRD."
+cluster: decomposition
 ---
 
 ## Summary

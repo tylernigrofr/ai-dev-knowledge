@@ -8,6 +8,10 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by: []
+audience: [implementer]
+activate_when: "Choosing between MCP tool calls and generated scripts for a repeatable task."
+cluster: tooling-aci
 ---
 
 ## Summary

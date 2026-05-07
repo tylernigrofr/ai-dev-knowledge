@@ -10,6 +10,19 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:agent-safe-tooling
+  - concept:diagnose-loop
+  - concept:feedback-loop-ceiling
+  - concept:integration-testing-bias
+  - concept:llm-as-judge-evals
+  - concept:mock-at-boundaries
+  - concept:pre-ai-fundamentals
+  - concept:ralph-loop
+  - concept:strategic-programming
+audience: [planner, implementer]
+activate_when: "Delegating implementation to an unattended agent."
+cluster: afk-loops
 ---
 
 ## Summary

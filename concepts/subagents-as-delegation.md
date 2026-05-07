@@ -10,6 +10,14 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:aci-tool-design
+  - concept:design-it-twice
+  - concept:error-compounding-in-agents
+  - concept:zoom-out
+audience: [planner, implementer]
+activate_when: "Need to do open-ended exploration or research without polluting parent context."
+cluster: context-management
 ---
 
 ## Summary

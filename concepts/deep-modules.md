@@ -11,6 +11,21 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-07
+referenced_by:
+  - concept:define-errors-out-of-existence
+  - concept:dependency-categories
+  - concept:design-interfaces-delegate-implementation
+  - concept:design-it-twice
+  - concept:diagnose-loop
+  - concept:feedback-loop-ceiling
+  - concept:integration-testing-bias
+  - concept:mock-at-boundaries
+  - concept:pre-ai-fundamentals
+  - concept:strategic-programming
+  - concept:ubiquitous-language
+audience: [implementer, reviewer]
+activate_when: "Designing or refactoring module boundaries."
+cluster: decomposition
 ---
 
 ## Summary

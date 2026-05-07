@@ -8,6 +8,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:error-compounding-in-agents
+audience: [reviewer, implementer]
+activate_when: "Evaluating an agentic system or comparing prompt/system variants."
+cluster: review-gates
 ---
 
 ## Summary

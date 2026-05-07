@@ -10,6 +10,14 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-07
+referenced_by:
+  - concept:agent-safe-tooling
+  - concept:define-errors-out-of-existence
+  - concept:tool-design-for-agents
+  - concept:workflow-before-agents
+audience: [implementer]
+activate_when: "Designing or improving tools/CLIs that an agent will invoke."
+cluster: tooling-aci
 ---
 
 ## Summary

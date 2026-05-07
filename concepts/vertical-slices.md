@@ -9,6 +9,18 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:afk-vs-hitl
+  - concept:code-first-automation
+  - concept:kanban-over-phases
+  - concept:prd-discipline
+  - concept:pre-ai-fundamentals
+  - concept:ralph-loop
+  - concept:workflow-before-agents
+  - playbook:afk-night-shift
+audience: [planner]
+activate_when: "Decomposing work into deliverable units for an agent or team."
+cluster: decomposition
 ---
 
 ## Summary

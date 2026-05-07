@@ -7,6 +7,12 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:code-first-automation
+  - concept:deep-modules
+audience: [planner, implementer]
+activate_when: "Handing implementation to an agent and deciding what to keep."
+cluster: decomposition
 ---
 
 ## Summary

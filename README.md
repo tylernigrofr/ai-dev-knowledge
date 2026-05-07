@@ -8,13 +8,13 @@ Curated, lean knowledge base of state-of-the-art AI-driven development practices
 - **`concepts/`** — atomic notes, one idea per file, citing sources.
 - **`playbooks/`** — workflow-shaped recipes citing concepts.
 - **`_inbox/`** — drop zone for unprocessed material; `/triage-inbox` resolves it.
-- **`skills/`** — agent-facing verbs (`kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `build-index`).
+- **`skills/`** — agent-facing verbs (`kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `rebuild-frontmatter`). Each skill is also exposed as a slash command of the same name when this repo is installed as a Claude Code plugin.
+- **`concepts/_clusters/`** — thin deep-module indexes grouping related concepts. Pull a cluster file first to discover a relevant concept bundle, then pull individual concepts.
 - **`CONTEXT.md`** — ubiquitous-language doc + curation rules + frontmatter schemas. **Read this first.**
-- **`INDEX.md`** — auto-generated index. Regenerate with `/build-index`.
 
 ## How to use it (human)
 
-- Browse `concepts/` and `playbooks/` directly, or open `INDEX.md`.
+- Browse `concepts/_clusters/` for grouped entry points, or `concepts/` and `playbooks/` directly. Use the `kb-search` skill for keyword/tag/phase queries.
 - Add new material by dropping URLs in `_inbox/urls.md` or files in `_inbox/drops/`. Then run `/triage-inbox`.
 
 ## How to use it (agent, from another project)
@@ -34,13 +34,13 @@ This repo ships a `.claude-plugin/plugin.json` so Claude Code can load it global
 3. Add 1–2 lines to your global `~/.claude/CLAUDE.md`:
    > AI dev best practices KB is installed as a plugin. Before non-trivial planning or context-heavy work, call `kb-search` to find relevant concepts/playbooks, then `kb-pull` for full content. Pull on demand — don't preload.
 
-You'll get the `kb-search` / `kb-pull` skills (auto-invoked when relevant) plus `/kb-search`, `/kb-pull`, `/triage-inbox`, `/add-source`, `/distill-concept`, `/build-index` slash commands available in every project.
+You'll get the `kb-search` / `kb-pull` skills (auto-invoked when relevant). Every skill in `skills/` is also invocable as a slash command of the same name (`/kb-search`, `/kb-pull`, `/triage-inbox`, `/add-source`, `/distill-concept`, `/rebuild-frontmatter`) — Claude Code's plugin loader registers them directly from each `SKILL.md`, so there is no separate `commands/` directory in this repo.
 
 Context cost is negligible — only skill names + descriptions load upfront; concept/playbook bodies are pulled on demand.
 
 ### Alternative: manual symlink
 
-If you don't want the plugin: symlink `skills/kb-search.md` and `skills/kb-pull.md` into `~/.claude/skills/` and add the same global CLAUDE.md pointer.
+If you don't want the plugin: symlink `skills/kb-search/` and `skills/kb-pull/` into `~/.claude/skills/` and add the same global CLAUDE.md pointer.
 
 ## Spec & design
 

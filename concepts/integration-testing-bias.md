@@ -9,6 +9,12 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:dependency-categories
+  - concept:mock-at-boundaries
+audience: [implementer, reviewer]
+activate_when: "Writing or reviewing tests for AI-generated code."
+cluster: review-gates
 ---
 
 ## Summary

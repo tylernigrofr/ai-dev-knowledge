@@ -8,6 +8,12 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:design-it-twice
+  - concept:mock-at-boundaries
+audience: [implementer, reviewer]
+activate_when: "Considering merging shallow modules that touch external systems."
+cluster: decomposition
 ---
 
 ## Summary

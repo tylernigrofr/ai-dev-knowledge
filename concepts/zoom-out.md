@@ -7,6 +7,11 @@ sources: [sources/repos/pocock-skills.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:just-in-time-docs
+audience: [planner, implementer]
+activate_when: "Entering an unfamiliar area of code and need a map first."
+cluster: context-management
 ---
 
 ## Summary

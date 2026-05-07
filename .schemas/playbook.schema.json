@@ -13,7 +13,12 @@
     "concepts_used": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
     "tools": { "type": "array", "items": { "type": "string" } },
     "status": { "enum": ["draft", "stable", "contested", "deprecated"] },
-    "last_reviewed": { "type": "string", "format": "date" }
+    "last_reviewed": { "type": "string", "format": "date" },
+    "referenced_by": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^(concept|playbook):[a-z0-9-]+$" },
+      "description": "Computed by skills/rebuild-frontmatter."
+    }
   },
   "additionalProperties": false
 }

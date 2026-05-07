@@ -9,6 +9,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:workflow-before-agents
+audience: [planner, implementer]
+activate_when: "Evaluating an agent framework that hides prompts/loops."
+cluster: tooling-aci
 ---
 
 ## Summary

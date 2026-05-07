@@ -9,6 +9,22 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:adr-discipline
+  - concept:generate-over-depend
+  - concept:grilling-alignment
+  - concept:handoff-docs
+  - concept:just-in-time-docs
+  - concept:out-of-scope-knowledge-base
+  - concept:prd-discipline
+  - concept:strategic-programming
+  - concept:three-route-prototype
+  - concept:ubiquitous-language
+  - playbook:afk-night-shift
+audience: [planner, reviewer]
+activate_when: "About to commit markdown docs into the repo."
+counter_to: just-in-time-docs
+cluster: kb-curation
 ---
 
 ## Summary

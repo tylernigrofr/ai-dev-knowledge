@@ -10,6 +10,16 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:clean-context-reviewer
+  - concept:deep-modules
+  - concept:own-your-planning-stack
+  - concept:ralph-loop
+  - concept:smart-zone-vs-dumb-zone
+  - playbook:afk-night-shift
+audience: [planner, implementer]
+activate_when: "Deciding whether instructions belong in CLAUDE.md/system prompt or a skill."
+cluster: context-management
 ---
 
 ## Summary

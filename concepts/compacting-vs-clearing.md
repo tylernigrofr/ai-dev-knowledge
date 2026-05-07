@@ -11,6 +11,14 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-07
+referenced_by:
+  - concept:handoff-docs
+  - concept:smart-zone-vs-dumb-zone
+  - concept:subagents-as-delegation
+audience: [planner, implementer]
+activate_when: "Session is filling up and you are tempted to compact."
+counter_to: clean-context-reviewer
+cluster: context-management
 ---
 
 ## Summary

@@ -5,10 +5,10 @@ This is a curated knowledge base of AI-driven development practices, optimized f
 ## What lives where
 - `sources/<type>/` — raw captures (youtube, articles, papers, repos, social).
 - `concepts/` — atomic notes, one idea per file, every concept cites ≥1 source.
+- `concepts/_clusters/` — deep-module index files bundling related concepts; pull a cluster to discover its concepts, then pull individual concepts as needed.
 - `playbooks/` — workflow recipes citing concepts.
 - `_inbox/` — drop zone; resolve via `/triage-inbox`.
-- `skills/` — agent verbs (`kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `build-index`). Pull on demand via `@skills/<name>.md`.
-- `INDEX.md` — auto-generated. Regenerate with `/build-index`.
+- `skills/<name>/SKILL.md` — agent verbs (`kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `rebuild-frontmatter`). When this repo is installed as a Claude Code plugin, each skill is also invocable as a slash command (`/kb-search`, etc.) — there is no separate `commands/` directory.
 - `.schemas/` — JSON schemas for source/concept/playbook frontmatter.
 
 ## Curation rules (the short version)
@@ -26,8 +26,8 @@ For every new insight, pick exactly one: **Refine | Replace section | Supersede 
 ## Working in this repo
 - Adding material: drop URLs in `_inbox/urls.md` or files in `_inbox/drops/`, then `/triage-inbox`.
 - Distilling: `/distill-concept` applies the curation gate. Bias hard against Create.
-- Searching: use `@skills/kb-search.md` rather than ad-hoc grep — it knows the frontmatter conventions.
-- Pulling full content: `@skills/kb-pull.md`.
+- Searching: use the `kb-search` skill (or `/kb-search` if installed as a plugin) rather than ad-hoc grep — it knows the frontmatter conventions.
+- Pulling full content: `kb-pull` skill (or `/kb-pull`).
 
 ## Don't
 - Don't write architecture overviews or "how the X system works" walkthroughs as committed markdown — that's doc rot. Use `/zoom-out` or a subagent on demand. (See `concepts/just-in-time-docs.md`.)

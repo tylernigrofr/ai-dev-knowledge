@@ -7,6 +7,13 @@ sources: [sources/repos/pocock-skills.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:agent-brief-format
+  - concept:grilling-alignment
+  - concept:out-of-scope-knowledge-base
+audience: [planner]
+activate_when: "Setting up issue states so AFK agents can grab work cleanly."
+cluster: afk-loops
 ---
 
 ## Summary

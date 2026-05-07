@@ -8,6 +8,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:aci-tool-design
+audience: [planner]
+activate_when: "Writing the contract comment that hands an issue off to an AFK agent."
+cluster: afk-loops
 ---
 
 ## Summary

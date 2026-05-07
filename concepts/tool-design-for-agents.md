@@ -8,6 +8,10 @@ sources:
 status: deprecated
 superseded_by: aci-tool-design
 last_reviewed: 2026-05-06
+referenced_by: []
+audience: [implementer]
+activate_when: "Deprecated; pull aci-tool-design instead."
+cluster: tooling-aci
 ---
 
 ## Summary

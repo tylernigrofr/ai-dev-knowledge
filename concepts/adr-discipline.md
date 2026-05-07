@@ -7,6 +7,15 @@ sources: [sources/repos/pocock-skills.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:doc-rot
+  - concept:grilling-alignment
+  - concept:just-in-time-docs
+  - concept:out-of-scope-knowledge-base
+  - concept:three-route-prototype
+audience: [planner, reviewer]
+activate_when: "About to write an ADR or deciding whether a decision deserves one."
+cluster: kb-curation
 ---
 
 ## Summary

@@ -13,7 +13,24 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
-
+referenced_by:
+  - concept:aci-tool-design
+  - concept:agent-loop-simplicity
+  - concept:agent-safe-tooling
+  - concept:agent-sandbox-isolation
+  - concept:code-first-automation
+  - concept:define-errors-out-of-existence
+  - concept:diagnose-loop
+  - concept:error-compounding-in-agents
+  - concept:generate-over-depend
+  - concept:integration-testing-bias
+  - concept:llm-as-judge-evals
+  - concept:ralph-loop
+  - concept:tdd-for-afk
+  - concept:workflow-before-agents
+audience: [implementer]
+activate_when: "Agent output quality plateaus and you suspect the signals are weak."
+cluster: tooling-aci
 ---
 
 ## Summary

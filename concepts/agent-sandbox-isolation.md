@@ -7,6 +7,10 @@ sources: [sources/articles/willison-designing-agentic-loops.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by: []
+audience: [implementer]
+activate_when: "Choosing where an agent runs and what it can touch."
+cluster: afk-loops
 ---
 
 ## Summary

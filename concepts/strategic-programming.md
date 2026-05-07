@@ -9,6 +9,12 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-07
+referenced_by:
+  - concept:deep-modules
+  - concept:define-errors-out-of-existence
+audience: [implementer, reviewer]
+activate_when: "Tempted to ship the first thing that works without design investment."
+cluster: pre-ai-foundations
 ---
 
 ## Summary

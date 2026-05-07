@@ -19,7 +19,7 @@ The project's ubiquitous-language doc, curation rules, and frontmatter schemas.
 2. **Soft cap: 200 lines / ~1500 words per concept.** Audit flags overruns.
 3. **Default to refine, not create.** New concept files require justification — most insights should refine an existing concept rather than spawn a new one.
 4. **Every concept cites ≥1 source.** No uncited claims.
-5. **Deprecated concepts stay** (link stability) but are hidden from the default `INDEX.md`. Use `status: deprecated` + `superseded_by: <slug>`.
+5. **Deprecated concepts stay** (link stability) but are filtered out by the `kb-search` skill's default queries. Use `status: deprecated` + `superseded_by: <slug>`.
 6. **Playbooks must cite concepts.** Playbooks without `concepts_used:` are suspect.
 7. **`last_reviewed` updates on any non-trivial edit.**
 
@@ -52,6 +52,11 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable             # draft | stable | contested | deprecated
 superseded_by: null
 last_reviewed: 2026-05-06
+audience: [planner, implementer, reviewer]   # which agent role(s) this concept serves
+activate_when: "context window is filling and attention is degrading"  # one-line trigger for when to pull this concept
+counter_to: null           # slug of the concept this anti-pattern opposes (optional)
+cluster: context-management  # slug of the cluster this concept belongs to (optional)
+referenced_by: []          # auto-computed list of concepts/playbooks that cite this one
 ---
 ```
 
@@ -83,6 +88,14 @@ Playbook body sections:
 3. **Loop** — the recurring workflow steps.
 4. **Verification** — how to know it worked.
 5. **Failure modes** — what goes wrong and how to recover.
+
+## Clusters
+
+Clusters live in `concepts/_clusters/<slug>.md` and act as deep-module indexes over the flat concept list. Each cluster file bundles related concepts under a single coherent interface — agents pull a cluster file to discover the concept bundle for a topic, then pull individual concepts on demand. Concepts opt in by setting `cluster: <slug>` in frontmatter; the `rebuild-frontmatter` skill keeps cluster membership and `referenced_by` in sync.
+
+## Index regeneration
+
+The former `build-index` skill is renamed to `rebuild-frontmatter`. It no longer produces a committed `INDEX.md` (that file was doc-rot per `concepts/just-in-time-docs.md`); instead it walks frontmatter to recompute `referenced_by` across concepts and playbooks. For ad-hoc discovery, use the `kb-search` skill.
 
 ## Inbox lifecycle
 

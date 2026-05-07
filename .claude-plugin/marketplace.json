@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "ai-dev-knowledge",
-      "description": "On-demand retrieval skills (kb-search, kb-pull) and KB maintenance commands (triage-inbox, distill-concept, add-source, build-index) for the ai-dev-knowledge knowledge base.",
+      "description": "On-demand retrieval skills (kb-search, kb-pull) and KB maintenance skills (triage-inbox, distill-concept, add-source, rebuild-frontmatter) for the ai-dev-knowledge knowledge base. Each skill is also invocable as a slash command of the same name.",
       "source": "./",
       "category": "knowledge"
     }
