@@ -7,9 +7,10 @@ sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/repos/pocock-skills.md
   - sources/articles/pocock-aihero-articles.md
+  - sources/articles/gemini-ousterhout-for-ai.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-05-07
 ---
 
 ## Summary
@@ -17,6 +18,8 @@ Prefer deep modules (small interface, lots of functionality inside) over shallow
 
 ## Why it matters
 From Ousterhout's *A Philosophy of Software Design*. Shallow modules force you into mocking hell or testing nothing meaningful — and AI agents amplify the cost because they reason worse about scattered, tightly-coupled code. Deep modules give you a stable interface to test against, a small surface for the AI to reason about, and the ability to refactor internals without consumer changes. Pocock's framing: agents radically speed up coding *and* radically speed up entropy, so "invest in design every day" (Beck) is now operational, not aspirational.
+
+**Ousterhout's roots.** Complexity comes from two architectural flaws: **dependencies** (code that can't be understood or modified in isolation) and **obscurity** (information that is hidden, unintuitive, or poorly named). Deep modules attack both — a narrow interface is a dependency-reduction tool, and rich-but-hidden internals only stay hidden if the interface names what they do. The need for sprawling external documentation is itself a red flag that the design is obscure.
 
 **Codebase shape dominates prompt and agent doc.** Pocock's claim is that your codebase determines AI quality more than any prompt or `AGENTS.md`/`CLAUDE.md`. Three failure modes when shape is wrong: feedback delay (AI doesn't know if its change worked), navigation friction (AI can't find files or work out how to test), and manual patching (you end up holding AI and codebase together). With the right shape, your maintainer cognitive load drops to ~7–8 chunks instead of hundreds of interrelated modules — the AI manages internals, you manage interfaces.
 
@@ -45,6 +48,15 @@ Use these terms exactly. Drift to "component / service / boundary" loses the pre
 - Run `/improve-codebase-architecture` periodically (Pocock recommends every few days) to surface deepening opportunities. The skill is informed by `CONTEXT.md` (names) and ADRs (decisions not to re-litigate).
 - Maintain a canonical interface doc (e.g. `MODULES.md` or a section of `CONTEXT.md`) and treat divergence as a bug.
 
+## Skills are deep modules
+
+Agent **skills** are the canonical deep-module pattern for agentic action. A skill directory has two layers, and the split is exactly the deep/shallow distinction:
+
+- **Discovery layer** — a tiny `SKILL.md` (name + one-paragraph "when to invoke"). This is the *only* thing in the agent's active context. It is the interface.
+- **Execution layer** — detailed reasoning steps, scripts, helpers, fixtures. Loaded on trigger, never paid for in tokens until needed.
+
+The anti-pattern is **toolitis**: dozens of shallow atomic endpoints (`get_user`, `update_record`, `fetch_balance`) all in the system prompt. The agent burns context just deciding which to call, KV-cache shreds, and hallucination risk multiplies. A small suite of deep skills replaces a wide menu of shallow tools.
+
 ## Caveats
 - "Deep" is not "huge." A 5000-line file is rarely a good module. The metric is interface narrowness vs. internal richness, not raw size.
 - Forced consolidation across genuinely independent concerns creates worse coupling than the shallow case it replaces.
@@ -56,3 +68,5 @@ Use these terms exactly. Drift to "component / service / boundary" loses the pre
 - [design-interfaces-delegate-implementation](design-interfaces-delegate-implementation.md) — operational counterpart
 - [diagnose-loop](diagnose-loop.md) — where missing seams surface as findings
 - [pre-ai-fundamentals](pre-ai-fundamentals.md) — Ousterhout, Beck, Fowler reading list
+- [strategic-programming](strategic-programming.md) — the daily investment that produces deep modules
+- [define-errors-out-of-existence](define-errors-out-of-existence.md) — Ousterhout's information-hiding mandate applied to error paths

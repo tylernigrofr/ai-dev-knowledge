@@ -6,9 +6,10 @@ tags: [tools, aci, poka-yoke, documentation, agent-interface]
 sources:
   - sources/articles/anthropic-building-effective-agents.md
   - sources/articles/anthropic-multi-agent-research-system.md
+  - sources/articles/gemini-ousterhout-for-ai.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-05-07
 ---
 
 ## Summary
@@ -38,6 +39,12 @@ Agents don't interact with the world directly; they interact through tools. A po
 - Run many example inputs in a workbench before deploying; observe where the model errs.
 - Iterate on the tool definition — argument names, types, descriptions — before iterating on the prompt.
 - **Let agents self-improve descriptions.** Give an agent its own tool definitions plus a set of failed traces, and ask it to suggest rewrites. Anthropic measured a 40% reduction in task-completion time after a tool-testing agent rewrote its own descriptions — the descriptions, not the model, were the bottleneck. Human-review before redeploying.
+
+**Prefer one deep general-purpose tool over a wide menu of shallow ones:**
+- A sandboxed code execution tool (`bash`, `python`) is the deepest possible tool — interface is "execute string"; functionality is Turing-complete. The agent writes transient scripts to handle novel cases instead of you pre-shipping fifty narrow endpoints.
+- Symptom of the anti-pattern ("toolitis"): fifteen specialised endpoints (`get_user`, `update_record`, `fetch_balance`...) that the agent has to chain. Each call burns tokens, multiplies hallucination risk, and exhausts decision budget on routing rather than reasoning.
+- Heuristic: if two tools could be replaced by one general-purpose tool plus a slightly smarter prompt, do that. Keep the general tool's safety surface explicit (sandbox, capability limits) — the depth comes from what the agent can compose, not from removing guardrails.
+- Pair this with [agent-safe-tooling](agent-safe-tooling.md) — a deep general tool is only safe if its errors are friendly, idempotent, and logged.
 
 **Distinguishing overlapping tools:**
 - If two tools have adjacent purposes, contrast them in *both* descriptions: "Use X when Y; use Z when W."

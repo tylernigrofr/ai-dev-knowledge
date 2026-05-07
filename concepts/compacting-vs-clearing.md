@@ -7,9 +7,10 @@ sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/articles/anthropic-claude-code-best-practices.md
   - sources/articles/anthropic-context-engineering.md
+  - sources/articles/gemini-ousterhout-for-ai.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-05-07
 ---
 
 ## Summary
@@ -31,6 +32,7 @@ LLMs are the guy from Memento — they cannot tell the difference between high-s
 - Claude Code's `/compact <instructions>` offers a middle path: summarize with explicit guidance on what to preserve (e.g., `/compact Focus on the API changes`). Still inferior to a clean reset for substantive work.
 - When compaction is unavoidable (long conversational tasks without clear milestones), use the two-pass protocol from Anthropic: first maximize recall (capture every relevant architectural decision, unresolved bug, and implementation detail), then iterate to improve precision (remove redundant tool outputs and transient scaffolding). Tool call results are the primary safe-removal candidates.
 - **Structured note-taking** is an alternative for very long-horizon tasks: agent writes persistent notes outside the context window, pulled back in at later steps. Provides persistent memory with minimal overhead. Complements rather than replaces the clear-and-handoff default.
+- **Filesystem as agent working memory.** The principle generalises into a harness pattern: treat the filesystem (or an artifact store) as durable RAM. As the conversation fills up, the harness intercepts, writes large tool outputs to disk, summarises older steps into a `progress.md`, then resets the context window — feeding the agent only the condensed progress + current objective. The agent runs continuously across many "lives," each starting clean, with structural coherence held by the filesystem rather than by the model. This is the autonomous-agent version of the human clear-and-handoff loop.
 
 ## Related
 - [smart-zone-vs-dumb-zone](smart-zone-vs-dumb-zone.md) — why the cliff exists
