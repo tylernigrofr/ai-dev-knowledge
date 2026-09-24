@@ -1,6 +1,6 @@
 {
   "name": "ai-dev-knowledge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Curated knowledge base of AI-driven development practices. Skills: kb-search and kb-pull for on-demand retrieval; add-source, distill-concept, triage-inbox, build-index, rebuild-frontmatter for maintenance.",
   "author": {
     "name": "Tyler Nigro",

@@ -65,7 +65,7 @@ Each loop iteration must accomplish exactly one task. Multi-task iterations degr
 ## Caveats
 - **For in-session work, native orchestration has absorbed most of this.** Claude Code's background subagents with worktree isolation, and scripted dynamic workflows, now do what the hand-rolled bash loop did, with a human orchestrator watching (see [orchestrator-worker-dispatch](orchestrator-worker-dispatch.md)). Ralph's remaining niche is fully unattended, single-threaded runs, or a harness you own end to end.
 - **Greenfield bias.** Ralph works best bootstrapping new projects from scratch. Modifying existing codebases is harder; scope carefully. (Huntley's explicit caveat.)
-- Cost scales with parallelism. Set per-issue and per-day budgets.
+- Cost scales with parallelism. On metered API billing, set per-issue and per-day dollar budgets. On a flat-rate subscription, the constraint is the plan's usage limits, not dollars.
 - Feedback-loop quality is the ceiling — slow tests, flaky assertions, or weak type errors directly cap output quality.
 - Senior engineering expertise remains essential for guiding the loop. Ralph is not fully autonomous.
 

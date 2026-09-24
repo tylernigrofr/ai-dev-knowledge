@@ -32,7 +32,7 @@ First-party source: the KB owner's full-time production project, a high-volume i
 - Run large queues in **dependency-aware waves** sized to real concurrency and CPU, "not a promised number of simultaneous agents". Land dependencies before starting their consumers; coordinate migration numbers and shared schema centrally.
 - **Worker brief contract:** issue + acceptance criteria, allowed scope, dependencies + base SHA, absolute worktree path, relevant docs, model, required checks, stop conditions, requested report. **Report contract:** commit SHA, changed files, behavior change, exact validation + results, risks and remaining work. Workers commit only their own work; the orchestrator owns integration and push.
 - Skip delegation for trivial work. Send a compact brief, not session history. Prefer a focused rescue over restarting; stop repeated unproductive attempts and reassess the brief.
-- Model routing by difficulty (later simplified to one strong model for every worker once it proved efficient enough).
+- Model routing by difficulty (later simplified to one strong model for every worker once it proved efficient enough). The goal is conserving subscription **usage limits**, not dollars. Never switch to paid, metered API execution just to get around a subscription limit.
 
 ## Testing ownership (owner ruling 2026-09-17, carve-out 2026-09-21)
 - **Workers write tests but never run them**; syntax checks only. They name each test they wrote and what it pins. The orchestrator runs targeted tests at integration (one branch at a time) and full sweeps after a substantial batch. Rationale: saves wall-clock, since the orchestrator will run them anyway.
@@ -64,4 +64,5 @@ Three failures where the run looks clean but the work didn't happen or happened 
 - "Profile before optimising — no exceptions, including for whoever is most confident." Workers that refute the orchestrator's premise by measuring are doing expected work.
 - Fixture snapshot drift: investigate every delta before regenerating; "+1 entry" treated as routine repeatedly hid regressions.
 - ADR-0030: the harness owns **invariants** (what must be true of an answer); the model owns **procedures** (how to get there). Procedures are perishable; invariants are few and permanent.
-- Spend: never run anything costing more than a few dollars without permission; price first, report the range, not the point.
+- **Metered spend** (scope matters, see **Metered spend** in `CONTEXT.md`): the permission rule covers only **pay-per-token API calls billed in dollars**, e.g. OpenRouter or a direct provider API key used by the product's own pipelines. Never start a metered run costing more than a few dollars without permission; price it first and report the estimate as a range, not a point. The provider key's limit is the hard cap.
+  - It does **not** cover work done on a flat-rate subscription: Claude Code, Codex, a Z AI coding plan, and so on. Dispatching subagents, running reviews, or doing long sessions on a subscription needs no spend permission and no pre-run estimate. The only concern there is conserving the plan's usage limits (capacity, not money), handled by sizing waves sensibly.

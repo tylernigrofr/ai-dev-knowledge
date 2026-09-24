@@ -40,7 +40,7 @@ Every token in the parent's context shrinks the smart zone. If you grep, read 12
 ## Caveats
 - Subagents can't see the parent's conversation. Self-contained briefs are mandatory.
 - Their summaries describe intent, not necessarily reality — verify their concrete claims (file paths, function names) before acting.
-- Token cost is non-trivial: a single agent run uses ~4× more tokens than a chat interaction; a multi-agent system uses ~15×. Reserve parallel subagent patterns for tasks where the performance gain justifies the spend. (Anthropic's production system saw 90.2% performance gains over single-agent, but at substantial token cost.)
+- Token cost is non-trivial: a single agent run uses ~4× more tokens than a chat interaction; a multi-agent system uses ~15×. Reserve parallel subagent patterns for tasks where the gain justifies the tokens. On a subscription those tokens come out of usage limits, not dollars, so no spend permission is involved. (Anthropic's production system saw 90.2% performance gains over single-agent, but at substantial token cost.)
 
 ## Related
 - [smart-zone-vs-dumb-zone](smart-zone-vs-dumb-zone.md) — what subagents protect

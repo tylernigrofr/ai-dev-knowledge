@@ -12,6 +12,7 @@ The project's ubiquitous-language doc, curation rules, and frontmatter schemas.
 - **Curation gate** — the Refine / Replace / Supersede / Reject / Create decision applied to every new insight.
 - **Phase** — lifecycle phase a concept/playbook touches: `planning | decomposition | implementation | review | qa`.
 - **Type (concept)** — `mental-model | principle | technique | tool | framework | anti-pattern | workflow`.
+- **Metered spend** — dollars billed per call/token on a pay-as-you-go API (OpenRouter, a provider API key). This is the *only* thing any "ask before spending" or cost-estimate rule in this KB refers to. It is distinct from **subscription usage**: work done through a flat-rate plan (Claude Code, Codex, a Z AI coding plan), which costs no marginal dollars and needs no spend permission. Subscription usage is a *capacity* concern (rate and usage limits), managed by sizing work, not by asking permission.
 
 ## Curation rules
 

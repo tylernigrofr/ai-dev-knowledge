@@ -61,6 +61,7 @@ An issue graph with blocking edges exposes parallelism, and a single session can
 ## Caveats
 - **Test ownership has two styles.** One lets each worker run its own TDD loop. The other (the owner's current ruling) has workers *write* tests but never run them, and the orchestrator runs validation at integration. That saves wall-clock but means a worker's first green is the orchestrator's. Choose one explicitly and put it in every brief.
 - Skip delegation for trivial work, since the brief costs more than the edit.
+- **On a subscription, parallel workers cost usage limits, not dollars.** Dispatching waves through Claude Code, Codex or a similar flat-rate plan needs no spend permission or pre-run estimate. Size waves to conserve the plan's limits. Spend-permission rules apply only to **metered** API calls (see `CONTEXT.md` → Metered spend), for example a worker whose task launches an OpenRouter-billed pipeline.
 - Agent-team teammates don't get separate worktrees, so split their work by file.
 - The orchestrator is the bottleneck. When integration queues up, shrink the wave rather than adding workers.
 

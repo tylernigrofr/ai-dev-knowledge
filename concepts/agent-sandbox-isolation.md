@@ -32,7 +32,7 @@ Three viable stances, in order of safety:
 
 Additional hygiene:
 - Point agents at test/staging environments, not production.
-- Set spending limits on any API key the agent can use.
+- Set spending limits on any metered API key the agent can use (OpenRouter, provider keys). Subscription-plan sessions have no per-call dollar cost to cap.
 - Create isolated org accounts for experimental agent work — separate from credentials that touch real user data.
 
 ### Git worktrees for parallel agents: verify, don't trust
