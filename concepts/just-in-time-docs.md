@@ -7,6 +7,11 @@ sources: [sources/articles/pocock-aihero-articles.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:doc-rot
+audience: [planner, reviewer]
+activate_when: "Tempted to commit an architecture overview as markdown."
+cluster: kb-curation
 ---
 
 ## Summary

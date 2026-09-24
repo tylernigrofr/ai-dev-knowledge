@@ -9,6 +9,17 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:doc-rot
+  - concept:grilling-alignment
+  - concept:just-in-time-docs
+  - concept:out-of-scope-knowledge-base
+  - concept:three-route-prototype
+  - playbook:architecture-audit
+  - playbook:idea-to-tickets
+audience: [planner, reviewer]
+activate_when: "About to write an ADR or deciding whether a decision deserves one."
+cluster: kb-curation
 ---
 
 ## Summary

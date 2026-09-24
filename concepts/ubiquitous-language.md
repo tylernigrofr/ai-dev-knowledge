@@ -10,6 +10,20 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:adr-discipline
+  - concept:deep-modules
+  - concept:design-it-twice
+  - concept:doc-rot
+  - concept:grilling-alignment
+  - concept:just-in-time-docs
+  - concept:pre-ai-fundamentals
+  - concept:zoom-out
+  - playbook:architecture-audit
+  - playbook:idea-to-tickets
+audience: [planner, implementer, reviewer]
+activate_when: "Starting a project or noticing terminology drift between code, docs, and prompts."
+cluster: kb-curation
 ---
 
 ## Summary

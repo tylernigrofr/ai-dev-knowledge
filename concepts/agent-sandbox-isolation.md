@@ -10,6 +10,12 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:orchestrator-worker-dispatch
+  - playbook:orchestrated-issue-waves
+audience: [implementer]
+activate_when: "Choosing where an agent runs and what it can touch."
+cluster: afk-loops
 ---
 
 ## Summary

@@ -9,6 +9,20 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:adr-discipline
+  - concept:agent-brief-format
+  - concept:design-interfaces-delegate-implementation
+  - concept:doc-rot
+  - concept:prd-discipline
+  - concept:pre-ai-fundamentals
+  - concept:systems-thinking-three-questions
+  - concept:three-route-prototype
+  - concept:triage-state-machine
+  - playbook:idea-to-tickets
+audience: [planner]
+activate_when: "Starting a new feature and need to align on design before writing a PRD."
+cluster: decomposition
 ---
 
 ## Summary

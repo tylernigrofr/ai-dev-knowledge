@@ -7,6 +7,13 @@ sources: [sources/repos/pocock-skills.md]
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:deep-modules
+  - concept:error-compounding-in-agents
+  - concept:integration-testing-bias
+audience: [implementer]
+activate_when: "Stuck on a hard bug or performance regression."
+cluster: review-gates
 ---
 
 ## Summary

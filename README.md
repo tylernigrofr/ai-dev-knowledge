@@ -9,11 +9,12 @@ It holds the *why* behind a workflow. The *how* lives in executable skills (e.g.
 | Path | What |
 |---|---|
 | `concepts/` | Atomic notes, one idea each, every one citing a source |
+| `concepts/_clusters/` | Thin indexes bundling related concepts (context-management, afk-loops, decomposition…) |
 | `playbooks/` | Workflow recipes that cite concepts: [orchestrated issue waves](playbooks/orchestrated-issue-waves.md), [idea → tickets](playbooks/idea-to-tickets.md), [architecture audit](playbooks/architecture-audit.md) |
 | `sources/` | Raw captures (articles, repos, videos) |
 | `_inbox/` | Drop zone; process with `/triage-inbox` |
-| `skills/` | Plugin skills: `kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `build-index` |
-| `scripts/kb.py` | Deterministic search / index / lint (stdlib Python) |
+| `skills/` | Plugin skills: `kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `build-index`, `rebuild-frontmatter` |
+| `scripts/kb.py` | Deterministic search / lint / refs / index (stdlib Python) |
 | `CONTEXT.md` | Vocabulary, curation rules, frontmatter schemas. **Read first.** |
 | `INDEX.md` | Generated. Don't edit. |
 
@@ -38,7 +39,8 @@ Suggested line for `~/.claude/CLAUDE.md`:
 
 ```bash
 python3 scripts/kb.py search orchestrator worktree   # find
-python3 scripts/kb.py lint                           # frontmatter, citations, links, size cap
+python3 scripts/kb.py refs                           # recompute referenced_by back-citations
+python3 scripts/kb.py lint                           # frontmatter, citations, links, clusters, size cap
 python3 scripts/kb.py index                          # regenerate INDEX.md
 ```
 

@@ -7,6 +7,11 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: deprecated
 superseded_by: orchestrator-worker-dispatch
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:agent-loop-simplicity
+  - concept:orchestrator-worker-dispatch
+audience: [planner]
+activate_when: "Multiple unblocked AFK issues exist and a sequential loop is bottlenecking."
 ---
 
 > **Deprecated.** Superseded 2026-09-24 by [orchestrator-worker-dispatch](orchestrator-worker-dispatch.md), which generalizes this beyond the Sandcastle harness to native Claude Code subagents with worktree isolation, and adds the brief/report contracts and integration gate from the owner's practice.

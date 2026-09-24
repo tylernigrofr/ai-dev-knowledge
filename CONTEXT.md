@@ -53,6 +53,11 @@ sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable             # draft | stable | contested | deprecated
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by: []          # computed by `scripts/kb.py refs`; never hand-edit
+audience: [planner, implementer, reviewer]   # which agent role(s) this concept serves
+activate_when: "context window is filling and attention is degrading"  # one-line trigger for pulling it
+counter_to: null           # optional: the positive concept this anti-pattern opposes
+cluster: context-management  # optional: its single cluster in concepts/_clusters/
 ---
 ```
 
@@ -85,6 +90,10 @@ Playbook body sections:
 3. **Loop** — the recurring workflow steps.
 4. **Verification** — how to know it worked.
 5. **Failure modes** — what goes wrong and how to recover.
+
+## Clusters
+
+`concepts/_clusters/<slug>.md` are thin deep-module indexes over the flat concept list: a seam statement plus members with one-line roles. A concept opts in with `cluster: <slug>`. Membership is single-assignment, and deprecated concepts are not members. `kb.py lint` checks that each cluster lists its members.
 
 ## Inbox lifecycle
 

@@ -9,6 +9,13 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:llm-not-a-trustworthy-abstraction
+  - concept:strategic-programming
+  - playbook:idea-to-tickets
+audience: [planner, implementer]
+activate_when: "Need to answer a state-machine or UI design question before committing."
+cluster: decomposition
 ---
 
 ## Summary

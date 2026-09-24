@@ -9,6 +9,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:phase-boundary-decisions
+audience: [planner, implementer]
+activate_when: "Ending a session or about to clear context."
+cluster: context-management
 ---
 
 ## Summary

@@ -12,6 +12,15 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:kanban-over-phases
+  - concept:ralph-loop
+  - concept:sand-castle-parallelization
+  - concept:subagents-as-delegation
+  - playbook:orchestrated-issue-waves
+audience: [planner]
+activate_when: "Several unblocked issues exist and one session will dispatch parallel workers to implement them."
+cluster: afk-loops
 ---
 
 ## Summary

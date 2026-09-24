@@ -10,6 +10,24 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:afk-vs-hitl
+  - concept:agent-loop-simplicity
+  - concept:agent-safe-tooling
+  - concept:agent-sandbox-isolation
+  - concept:clean-context-reviewer
+  - concept:feedback-loop-ceiling
+  - concept:kanban-over-phases
+  - concept:orchestrator-worker-dispatch
+  - concept:own-your-planning-stack
+  - concept:push-vs-pull-context
+  - concept:sand-castle-parallelization
+  - concept:tdd-for-afk
+  - concept:vertical-slices
+  - playbook:afk-night-shift
+audience: [planner, implementer]
+activate_when: "Setting up an unattended single-agent implementation loop."
+cluster: afk-loops
 ---
 
 ## Summary

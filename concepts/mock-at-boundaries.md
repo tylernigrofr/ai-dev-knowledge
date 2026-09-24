@@ -8,6 +8,13 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:aci-tool-design
+  - concept:dependency-categories
+  - concept:integration-testing-bias
+audience: [implementer, reviewer]
+activate_when: "Choosing what to mock in tests for AI-written code."
+cluster: review-gates
 ---
 
 ## Summary

@@ -10,6 +10,11 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - playbook:orchestrated-issue-waves
+audience: [planner, reviewer]
+activate_when: "An agent repeated a mistake, or CLAUDE.md is growing with rules a script could enforce."
+cluster: tooling-aci
 ---
 
 ## Summary

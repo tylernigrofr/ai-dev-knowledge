@@ -14,7 +14,30 @@
     "sources": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
     "status": { "enum": ["draft", "stable", "contested", "deprecated"] },
     "superseded_by": { "type": ["string", "null"] },
-    "last_reviewed": { "type": "string", "format": "date" }
+    "last_reviewed": { "type": "string", "format": "date" },
+    "referenced_by": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^(concept|playbook):[a-z0-9-]+$" },
+      "description": "Computed by skills/rebuild-frontmatter. Slugs of concepts/playbooks that cite this concept, prefixed with concept: or playbook:."
+    },
+    "audience": {
+      "type": "array",
+      "items": { "enum": ["planner", "implementer", "reviewer"] },
+      "minItems": 1,
+      "description": "Which agent role(s) this concept is most useful to."
+    },
+    "activate_when": {
+      "type": "string",
+      "description": "One-sentence trigger: when an agent should pull this concept."
+    },
+    "counter_to": {
+      "type": ["string", "null"],
+      "description": "Optional. Slug of the positive concept this anti-pattern pairs against."
+    },
+    "cluster": {
+      "enum": ["context-management", "agent-skill-design", "afk-loops", "decomposition", "review-gates", "pre-ai-foundations", "kb-curation", "tooling-aci"],
+      "description": "Optional. Single cluster this concept belongs to."
+    }
   },
   "additionalProperties": false
 }

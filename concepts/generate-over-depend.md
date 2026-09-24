@@ -8,6 +8,10 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by: []
+audience: [implementer]
+activate_when: "Considering adding a fast-moving or poorly-documented dependency."
+cluster: tooling-aci
 ---
 
 ## Summary

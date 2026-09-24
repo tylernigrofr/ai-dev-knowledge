@@ -3,7 +3,8 @@
 
   kb.py search [QUERY...] [--tag T] [--type T] [--phase P] [--kind concept|playbook|source] [--all]
   kb.py index            regenerate INDEX.md
-  kb.py lint             validate frontmatter, links, citations, size caps
+  kb.py lint             validate frontmatter, links, citations, clusters, size caps
+  kb.py refs             recompute `referenced_by` on every concept (back-citations)
 
 KB root: $AI_KB_PATH if set, else the repo this script lives in.
 """
@@ -188,6 +189,10 @@ def cmd_index(a):
 def lint(docs):
     problems = []
     slugs = {d["slug"] for d in docs if d["kind"] == "concept"}
+    clusters = {c.stem: set(as_list(parse(c)[0].get("members"))) for c in (ROOT / "concepts/_clusters").glob("*.md") if c.stem != "README"}
+    for cl, members in clusters.items():
+        for m in members - slugs:
+            problems.append(f"concepts/_clusters/{cl}.md: member `{m}` is not a concept")
     for d in docs:
         fm, p = d["fm"], d["path"]
         for k in REQUIRED[d["kind"]]:
@@ -203,6 +208,13 @@ def lint(docs):
                     problems.append(f"{p}: cites missing source `{s}`")
             if fm.get("status") == "deprecated" and fm.get("superseded_by") not in slugs:
                 problems.append(f"{p}: deprecated without valid superseded_by")
+            cl = fm.get("cluster")
+            if cl and cl not in clusters:
+                problems.append(f"{p}: unknown cluster `{cl}`")
+            elif cl and d["slug"] not in clusters[cl]:
+                problems.append(f"{p}: not listed in concepts/_clusters/{cl}.md members")
+            if fm.get("counter_to") and fm.get("counter_to") not in slugs:
+                problems.append(f"{p}: counter_to references unknown `{fm.get('counter_to')}`")
             if d["lines"] > LINE_CAP:
                 problems.append(f"{p}: {d['lines']} lines (cap {LINE_CAP})")
         if d["kind"] == "playbook":
@@ -216,6 +228,38 @@ def lint(docs):
             if not target.startswith("http") and not (ROOT / p).parent.joinpath(target).resolve().exists():
                 problems.append(f"{p}: broken link `{target}`")
     return problems
+
+
+# ---------- refs ----------
+
+def cmd_refs(a):
+    docs = load(("concept", "playbook"))
+    slugs = {d["slug"] for d in docs if d["kind"] == "concept"}
+    refs = defaultdict(set)
+    for d in docs:
+        cited = set(as_list(d["fm"].get("concepts"))) | set(as_list(d["fm"].get("concepts_used")))
+        cited |= set(re.findall(r"\((?:\.\./concepts/)?([a-z0-9-]+)\.md\)", d["body"]))
+        for c in cited & slugs - {d["slug"]}:
+            refs[c].add(f"{d['kind']}:{d['slug']}")
+    changed = 0
+    for d in docs:
+        if d["kind"] != "concept":
+            continue
+        path = ROOT / d["path"]
+        text = path.read_text(encoding="utf-8")
+        m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+        fm = re.sub(r"^referenced_by:.*?(?=^\S)", "", m.group(1) + "\n", flags=re.S | re.M).rstrip("\n")
+        items = sorted(refs[d["slug"]])
+        block = "referenced_by: []" if not items else "referenced_by:\n" + "\n".join(f"  - {i}" for i in items)
+        if "\nlast_reviewed:" in "\n" + fm:
+            fm = re.sub(r"^(last_reviewed:.*)$", lambda mm: mm.group(1) + "\n" + block, fm, count=1, flags=re.M)
+        else:
+            fm += "\n" + block
+        new = f"---\n{fm}\n---\n" + text[m.end():]
+        if new != text:
+            path.write_text(new, encoding="utf-8")
+            changed += 1
+    print(f"referenced_by updated on {changed} concept(s)")
 
 
 def cmd_lint(a):
@@ -240,6 +284,7 @@ def main():
     s.set_defaults(fn=cmd_search)
     sub.add_parser("index").set_defaults(fn=cmd_index)
     sub.add_parser("lint").set_defaults(fn=cmd_lint)
+    sub.add_parser("refs").set_defaults(fn=cmd_refs)
     a = ap.parse_args()
     a.fn(a)
 

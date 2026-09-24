@@ -8,6 +8,12 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:dependency-categories
+  - playbook:architecture-audit
+audience: [planner, implementer]
+activate_when: "Designing a non-trivial interface before implementation."
+cluster: decomposition
 ---
 
 ## Summary

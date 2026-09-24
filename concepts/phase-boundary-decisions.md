@@ -10,6 +10,16 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:compacting-vs-clearing
+  - concept:handoff-docs
+  - concept:smart-zone-vs-dumb-zone
+  - concept:subagents-as-delegation
+  - playbook:idea-to-tickets
+  - playbook:orchestrated-issue-waves
+audience: [planner, implementer]
+activate_when: "At a phase boundary, deciding whether to continue, clear, hand off, delegate, or compact."
+cluster: context-management
 ---
 
 ## Summary

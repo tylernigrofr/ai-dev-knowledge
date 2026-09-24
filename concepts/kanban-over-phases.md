@@ -10,6 +10,15 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-09-24
+referenced_by:
+  - concept:orchestrator-worker-dispatch
+  - concept:sand-castle-parallelization
+  - concept:triage-state-machine
+  - playbook:idea-to-tickets
+  - playbook:orchestrated-issue-waves
+audience: [planner]
+activate_when: "Decomposing a PRD into work for one or many agents."
+cluster: decomposition
 ---
 
 ## Summary

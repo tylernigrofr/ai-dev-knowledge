@@ -8,6 +8,13 @@ sources:
 status: stable
 superseded_by: null
 last_reviewed: 2026-05-06
+referenced_by:
+  - concept:aci-tool-design
+  - concept:define-errors-out-of-existence
+  - concept:rules-to-checks
+audience: [implementer]
+activate_when: "Hardening dev tools, CLIs, or scripts agents will run unattended."
+cluster: tooling-aci
 ---
 
 ## Summary
