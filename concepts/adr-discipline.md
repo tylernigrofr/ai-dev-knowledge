@@ -3,10 +3,12 @@ title: ADR discipline (offer sparingly)
 type: principle
 phase: [planning, decomposition]
 tags: [adr, documentation, decisions, doc-rot]
-sources: [sources/repos/pocock-skills.md]
+sources:
+  - sources/repos/pocock-skills.md
+  - sources/repos/owner-practice-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -31,6 +33,8 @@ Operational rules:
 - When the user rejects an architectural candidate with a load-bearing reason, that's an ADR moment — record it so the same suggestion doesn't recur.
 
 ## Caveats
+- **The bar is per-decision, not per-project.** An active product can legitimately accumulate dozens of ADRs when each one passes the three-way test. Titling each ADR as its decision stated as a sentence (e.g. "a gap is not a disagreement") makes the directory listing itself a scannable rule index.
+- Dated **owner rulings** in `docs/agents/*.md` are a lighter-weight tier for workflow policy ("workers never run tests") that doesn't need a full ADR.
 - ADRs can rot too. If a decision is reversed, supersede the old ADR rather than deleting it (link forward).
 - Some teams prefer issue-tracker decisions or commit-message rationale. ADRs are the strongest form, but not the only one.
 

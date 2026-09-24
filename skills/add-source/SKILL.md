@@ -5,6 +5,8 @@ description: Use when the user provides a single URL or pasted text and wants it
 
 # add-source
 
+**Write to the live KB repo only** — `$AI_KB_PATH`, or the current directory if it is the KB. Never edit the plugin cache under `~/.claude/plugins/`; it's a read-only snapshot. Run `python3 scripts/kb.py lint` before finishing.
+
 One-shot ingestion of a single source.
 
 ## Inputs
@@ -16,7 +18,7 @@ One-shot ingestion of a single source.
 ## Procedure
 
 1. **Capture content** based on type:
-   - **YouTube**: Use the Supadata MCP `supadata_transcript` tool to fetch the transcript. Capture title, author, URL, published date if available.
+   - **YouTube**: Fetch the transcript with whatever transcript tool is available (e.g. Supadata MCP); if none, ask the user to paste it. Capture title, author, URL, published date if available.
    - **Article**: Fetch the page (web fetch). Capture title, author, URL, published date. Strip nav/footer; keep main content.
    - **Paper**: Same as article; flag `type: paper` for academic sources.
    - **Repo**: Capture README + key file paths + install notes. Note what's worth stealing.

@@ -7,10 +7,12 @@ sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/articles/anthropic-claude-code-best-practices.md
   - sources/articles/anthropic-context-engineering.md
-status: stable
-superseded_by: null
-last_reviewed: 2026-05-06
+status: deprecated
+superseded_by: phase-boundary-decisions
+last_reviewed: 2026-09-24
 ---
+
+> **Deprecated.** Superseded 2026-09-24 by [phase-boundary-decisions](phase-boundary-decisions.md). Pocock's 2026 guidance replaces "always clear and hand off" with an ordered test at each phase boundary, where `/compact` is the fallback default and handoff is only for work that has to travel.
 
 ## Summary
 Compacting accumulated context feels productive but leaves sediment that degrades reasoning; clearing and resuming from a clean handoff almost always wins.

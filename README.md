@@ -1,52 +1,45 @@
 # AI Dev Knowledge Base
 
-Curated, lean knowledge base of state-of-the-art AI-driven development practices and the proven software-engineering fundamentals they lean on. Optimized for **AI agents pulling context on demand**, browsable as a wiki as a free byproduct.
+A lean, curated knowledge base of agentic software-development practice, and of the engineering fundamentals it leans on. It's built for **agents pulling context on demand**, and readable as a wiki. It's also a Claude Code plugin.
 
-## What's in here
+It holds the *why* behind a workflow. The *how* lives in executable skills (e.g. [`mattpocock-skills`](https://github.com/mattpocock/skills)). Concepts explain and cross-reference the ideas; they don't restate skill procedures.
 
-- **`sources/`** — raw captures (YouTube transcripts, articles, papers, repos, social posts).
-- **`concepts/`** — atomic notes, one idea per file, citing sources.
-- **`playbooks/`** — workflow-shaped recipes citing concepts.
-- **`_inbox/`** — drop zone for unprocessed material; `/triage-inbox` resolves it.
-- **`skills/`** — agent-facing verbs (`kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `build-index`).
-- **`CONTEXT.md`** — ubiquitous-language doc + curation rules + frontmatter schemas. **Read this first.**
-- **`INDEX.md`** — auto-generated index. Regenerate with `/build-index`.
+## Layout
 
-## How to use it (human)
+| Path | What |
+|---|---|
+| `concepts/` | Atomic notes, one idea each, every one citing a source |
+| `playbooks/` | Workflow recipes that cite concepts: [orchestrated issue waves](playbooks/orchestrated-issue-waves.md), [idea → tickets](playbooks/idea-to-tickets.md), [architecture audit](playbooks/architecture-audit.md) |
+| `sources/` | Raw captures (articles, repos, videos) |
+| `_inbox/` | Drop zone; process with `/triage-inbox` |
+| `skills/` | Plugin skills: `kb-search`, `kb-pull`, `add-source`, `distill-concept`, `triage-inbox`, `build-index` |
+| `scripts/kb.py` | Deterministic search / index / lint (stdlib Python) |
+| `CONTEXT.md` | Vocabulary, curation rules, frontmatter schemas. **Read first.** |
+| `INDEX.md` | Generated. Don't edit. |
 
-- Browse `concepts/` and `playbooks/` directly, or open `INDEX.md`.
-- Add new material by dropping URLs in `_inbox/urls.md` or files in `_inbox/drops/`. Then run `/triage-inbox`.
+## Use from any project
 
-## How to use it (agent, from another project)
+The repo is its own marketplace:
 
-### Recommended: install as a Claude Code plugin
+```
+/plugin marketplace add tylernigrofr/ai-dev-knowledge
+/plugin install ai-dev-knowledge@ai-dev-knowledge
+```
 
-This repo ships a `.claude-plugin/plugin.json` so Claude Code can load it globally.
+After pushing changes here, run `/plugin update ai-dev-knowledge` in Claude Code. The installed copy is a snapshot, not a live link.
 
-1. Set `AI_KB_PATH` to this repo's absolute path (so the skills can locate the KB content):
-   ```powershell
-   [Environment]::SetEnvironmentVariable("AI_KB_PATH", "$env:USERPROFILE\OneDrive\Documents\GitHub\ai-dev-knowledge", "User")
-   ```
-2. In Claude Code, install the plugin from this local path (or the GitHub URL):
-   ```
-   /plugin install <path-to-this-repo>
-   ```
-3. Add 1–2 lines to your global `~/.claude/CLAUDE.md`:
-   > AI dev best practices KB is installed as a plugin. Before non-trivial planning or context-heavy work, call `kb-search` to find relevant concepts/playbooks, then `kb-pull` for full content. Pull on demand — don't preload.
+Retrieval skills resolve the KB as `$AI_KB_PATH` if set, and otherwise the plugin's own directory. Maintenance skills (`add-source`, `distill-concept`, `triage-inbox`, `build-index`) write only to the live repo, so run them from inside it or set `AI_KB_PATH`.
 
-You'll get the `kb-search` / `kb-pull` skills (auto-invoked when relevant) plus `/kb-search`, `/kb-pull`, `/triage-inbox`, `/add-source`, `/distill-concept`, `/build-index` slash commands available in every project.
+Suggested line for `~/.claude/CLAUDE.md`:
 
-Context cost is negligible — only skill names + descriptions load upfront; concept/playbook bodies are pulled on demand.
+> AI dev practices KB is installed as a plugin. Before non-trivial planning, call `kb-search`, then `kb-pull` the one or two relevant entries. Pull on demand; don't preload.
 
-### Alternative: manual symlink
+## Maintain
 
-If you don't want the plugin: symlink `skills/kb-search.md` and `skills/kb-pull.md` into `~/.claude/skills/` and add the same global CLAUDE.md pointer.
+```bash
+python3 scripts/kb.py search orchestrator worktree   # find
+python3 scripts/kb.py lint                           # frontmatter, citations, links, size cap
+python3 scripts/kb.py index                          # regenerate INDEX.md
+```
 
-## Spec & design
-
-- [Design spec](docs/superpowers/specs/2026-05-06-ai-dev-knowledge-base-design.md)
-- [Phase 1+2 implementation plan](docs/superpowers/plans/2026-05-06-ai-dev-knowledge-base-phase-1-and-2.md)
-
-## Curation philosophy
-
-Lean over comprehensive. Default to refining existing concepts, not creating new ones. Every concept cites a source. Periodic audit (`/review-staleness`, future) prunes bloat. See `CONTEXT.md` for the full rules.
+Add material with `/add-source <url>`, or drop URLs into `_inbox/urls.md` and run `/triage-inbox`. Every insight goes through the curation gate (Refine / Replace section / Supersede / Reject / Create). The default is Refine.

@@ -5,6 +5,8 @@ description: The KB curation gate. Use when a single insight needs to be routed 
 
 # distill-concept
 
+**Write to the live KB repo only** — `$AI_KB_PATH`, or the current directory if it is the KB. Never edit the plugin cache under `~/.claude/plugins/`; it's a read-only snapshot. Run `python3 scripts/kb.py lint` before finishing.
+
 Apply the curation gate to a single insight.
 
 ## Inputs
@@ -14,7 +16,7 @@ Apply the curation gate to a single insight.
 
 ## Procedure
 
-1. **Find candidate concepts** — call `kb-search` with the insight's keywords + likely tags. Examine top 5 matches.
+1. **Find candidate concepts** — run `python3 scripts/kb.py search <keywords>` (twice, with different keywords). Examine top 5 matches.
 2. **Decide one of**:
    - **Refine** — the insight is a small clarification, a better phrasing, or a new example for an existing concept. Edit that concept inline. Bump `last_reviewed`. Add the source to `sources:` if not already there.
    - **Replace section** — the insight clearly improves one section (e.g. "How to apply") of an existing concept. Edit that section, preserve the rest. Bump `last_reviewed`. Add source.

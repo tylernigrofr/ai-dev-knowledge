@@ -3,10 +3,12 @@ title: Triage state machine (canonical issue roles)
 type: workflow
 phase: [decomposition, qa]
 tags: [triage, issue-tracker, state-machine, agent-brief]
-sources: [sources/repos/pocock-skills.md]
+sources:
+  - sources/repos/pocock-skills.md
+  - sources/repos/owner-practice-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -26,6 +28,8 @@ Agent-driven implementation depends on issues being unambiguously ready. Without
 - `wontfix` for enhancements writes to a durable `.out-of-scope/<slug>.md` and links from the closing comment, so future triage can spot duplicates.
 
 ## Caveats
+- **Only triage issues you didn't create.** Tickets from `/to-tickets` are agent-ready by construction and are labelled `ready-for-agent` on publish, so don't run them through triage.
+- In practice a busy repo adds a priority axis (`priority:now/next/later`) and `epic` parents on top of the canonical roles.
 - Roles must map to real label strings on the tracker. Pocock's `/setup-matt-pocock-skills` does this once per repo.
 - The state machine assumes a maintainer in the loop. Fully autonomous triage isn't supported by design.
 

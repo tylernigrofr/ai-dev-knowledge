@@ -3,10 +3,13 @@ title: Agent sandbox and environment isolation
 type: principle
 phase: [implementation]
 tags: [safety, sandboxing, prompt-injection, credentials, infrastructure]
-sources: [sources/articles/willison-designing-agentic-loops.md]
+sources:
+  - sources/articles/willison-designing-agentic-loops.md
+  - sources/repos/owner-practice-2026.md
+  - sources/articles/claude-code-orchestration-docs-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -25,6 +28,14 @@ Additional hygiene:
 - Point agents at test/staging environments, not production.
 - Set spending limits on any API key the agent can use.
 - Create isolated org accounts for experimental agent work — separate from credentials that touch real user data.
+
+### Git worktrees for parallel agents: verify, don't trust
+Worktree isolation (Claude Code `isolation: worktree`) separates parallel agents' *files*, not their machine. It has three **silently green** failure modes. In each, the run looks clean but the work didn't happen, or happened in the wrong place:
+1. **The worktree was garbage-collected.** Unchanged worktrees are auto-removed. A resumed agent's shell falls back to the shared checkout on `main` while the harness still reports it as isolated. Check `git rev-parse --show-toplevel` and the branch before any write, and `cd` explicitly in every command.
+2. **The base is stale.** It was cut before a dependency landed. Check with `git merge-base --is-ancestor <sha> HEAD`, and land dependencies before cutting dependent worktrees.
+3. **Gitignored files are missing** (`.env`, local fixture paths). Tests skip instead of failing. Copy them in, and make the suite refuse to run without them.
+
+Also watch for code run by path importing an *installed* copy of the package instead of the worktree's edits. The tell is a fix that demonstrably changed the code but produced no change in the measurement.
 
 ## Caveats
 - External infra adds latency and egress cost. For fast iteration loops, a local container may be preferable.

@@ -6,9 +6,10 @@ tags: [automation, agents, tdd]
 sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/articles/huntley-ralph-wiggum-software-engineer.md
+  - sources/articles/claude-code-orchestration-docs-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -44,12 +45,14 @@ Each loop iteration must accomplish exactly one task. Multi-task iterations degr
 - Include a self-improvement directive: after each iteration, update `@AGENT.md` (or equivalent) with any new learnings so the next loop starts with better context.
 
 ## Caveats
+- **For in-session work, native orchestration has absorbed most of this.** Claude Code's background subagents with worktree isolation, and scripted dynamic workflows, now do what the hand-rolled bash loop did, with a human orchestrator watching (see [orchestrator-worker-dispatch](orchestrator-worker-dispatch.md)). Ralph's remaining niche is fully unattended, single-threaded runs, or a harness you own end to end.
 - **Greenfield bias.** Ralph works best bootstrapping new projects from scratch. Modifying existing codebases is harder; scope carefully. (Huntley's explicit caveat.)
 - Cost scales with parallelism. Set per-issue and per-day budgets.
 - Feedback-loop quality is the ceiling — slow tests, flaky assertions, or weak type errors directly cap output quality.
 - Senior engineering expertise remains essential for guiding the loop. Ralph is not fully autonomous.
 
 ## Related
+- [orchestrator-worker-dispatch](orchestrator-worker-dispatch.md): the parallel, supervised successor
 - [vertical-slices](vertical-slices.md) — what feeds the loop
 - [clean-context-reviewer](clean-context-reviewer.md) — the review half
 - [push-vs-pull-context](push-vs-pull-context.md) — context discipline within the loop

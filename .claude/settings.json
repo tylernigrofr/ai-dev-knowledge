@@ -25,7 +25,8 @@
       "Bash(git status)",
       "Bash(git diff:*)",
       "Bash(mv:*)",
-      "Bash(rm _inbox/**)"
+      "Bash(rm _inbox/**)",
+      "Bash(python3 scripts/kb.py:*)"
     ]
   }
 }

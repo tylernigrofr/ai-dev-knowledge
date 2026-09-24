@@ -7,9 +7,10 @@ sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/articles/anthropic-context-engineering.md
   - sources/articles/anthropic-multi-agent-research-system.md
+  - sources/articles/claude-code-orchestration-docs-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -22,7 +23,8 @@ Every token in the parent's context shrinks the smart zone. If you grep, read 12
 - Default to subagents for: open-ended search, "where does X live in the codebase," reading long docs, multi-file exploration, independent verification of a hypothesis.
 - Brief the subagent like a colleague who just walked in: goal, what's been ruled out, what shape the answer should take.
 - Ask for short reports. "Under 200 words" beats "tell me everything." A well-structured sub-agent may use tens of thousands of tokens exploring but should return a condensed 1,000–2,000 token summary (Anthropic's observed norm).
-- Run independent subagents in parallel — single message with multiple tool calls.
+- Run independent subagents in parallel (a single message with multiple tool calls), in the background by default.
+- When many subagents would each return detailed results, the parent's context becomes the bottleneck. Demand terse, structured reports, or move the fan-out into a scripted workflow that holds intermediate results outside the parent's context.
 - Don't subagent for tasks where the parent must see the intermediate state (e.g., interactive debugging).
 
 ## Caveats
@@ -32,5 +34,6 @@ Every token in the parent's context shrinks the smart zone. If you grep, read 12
 
 ## Related
 - [smart-zone-vs-dumb-zone](smart-zone-vs-dumb-zone.md) — what subagents protect
-- [compacting-vs-clearing](compacting-vs-clearing.md) — subagents as a clearing strategy
+- [phase-boundary-decisions](phase-boundary-decisions.md): subagents as a boundary option
+- [orchestrator-worker-dispatch](orchestrator-worker-dispatch.md): subagents as parallel implementers
 - [clean-context-reviewer](clean-context-reviewer.md) — the reviewer is itself a kind of subagent

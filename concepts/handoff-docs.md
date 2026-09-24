@@ -3,10 +3,12 @@ title: Handoff documents for context resets
 type: technique
 phase: [planning, implementation]
 tags: [context-management, handoff, session-boundaries]
-sources: [sources/repos/pocock-skills.md]
+sources:
+  - sources/repos/pocock-skills.md
+  - sources/repos/owner-practice-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -23,10 +25,12 @@ Clearing context is the right move (see compacting-vs-clearing), but the next se
 - Pass an argument describing what the next session will focus on so the doc tailors itself.
 
 ## Caveats
+- **Narrowed in 2026:** Pocock now reserves `/handoff` for work that has to *travel*: a new harness, a new directory or repo, a colleague, or a side task forked mid-phase. Staying in the same harness and directory? Continue, `/clear`, use a subagent, or `/compact` instead (see [phase-boundary-decisions](phase-boundary-decisions.md)).
+- For an orchestrator, the durable handoff is the GitHub thread (landed work, active workers and worktrees, pending issues, blockers, next step), not a markdown file.
 - Handoff only works if durable artifacts are already in good shape. If the PRD is stale, the handoff inherits the staleness.
 - For trivial work, a clean clear without a handoff is fine.
 
 ## Related
-- [compacting-vs-clearing](compacting-vs-clearing.md) — handoffs are how clearing stays cheap
+- [phase-boundary-decisions](phase-boundary-decisions.md): when a handoff is the right move at all
 - [smart-zone-vs-dumb-zone](smart-zone-vs-dumb-zone.md) — handoffs let you keep every session in the smart zone
 - [doc-rot](doc-rot.md) — handoffs are throwaway by design; resist promoting them to repo docs

@@ -19,9 +19,10 @@ The project's ubiquitous-language doc, curation rules, and frontmatter schemas.
 2. **Soft cap: 200 lines / ~1500 words per concept.** Audit flags overruns.
 3. **Default to refine, not create.** New concept files require justification — most insights should refine an existing concept rather than spawn a new one.
 4. **Every concept cites ≥1 source.** No uncited claims.
-5. **Deprecated concepts stay** (link stability) but are hidden from the default `INDEX.md`. Use `status: deprecated` + `superseded_by: <slug>`.
+5. **Deprecated concepts and playbooks stay** (link stability) but are hidden from search and collapsed in `INDEX.md`. Use `status: deprecated` + `superseded_by: <slug>` and a one-line `> **Deprecated.**` note above the Summary.
 6. **Playbooks must cite concepts.** Playbooks without `concepts_used:` are suspect.
 7. **`last_reviewed` updates on any non-trivial edit.**
+8. **Owner practice is a first-class source.** Lessons from the owner's own repos are captured as `sources/repos/*-practice.md`, generalized (no private product detail, since this repo is public).
 
 ## Frontmatter schemas
 
@@ -73,6 +74,7 @@ tags: [parallelization, ralph-loop, sandcastle]
 concepts_used: [ralph-loop, vertical-slices, push-vs-pull-context, clean-context-reviewer]
 tools: [sandcastle, opencode, claude-code]
 status: stable
+superseded_by: null
 last_reviewed: 2026-05-06
 ---
 ```

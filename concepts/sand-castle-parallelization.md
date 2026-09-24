@@ -4,10 +4,12 @@ type: workflow
 phase: [implementation, review, qa]
 tags: [parallelization, worktrees, sandboxing, kanban]
 sources: [sources/youtube/pocock-vibe-engineering-2025.md]
-status: stable
-superseded_by: null
-last_reviewed: 2026-05-06
+status: deprecated
+superseded_by: orchestrator-worker-dispatch
+last_reviewed: 2026-09-24
 ---
+
+> **Deprecated.** Superseded 2026-09-24 by [orchestrator-worker-dispatch](orchestrator-worker-dispatch.md), which generalizes this beyond the Sandcastle harness to native Claude Code subagents with worktree isolation, and adds the brief/report contracts and integration gate from the owner's practice.
 
 ## Summary
 Run a planner, implementers, reviewers, and a merger as separate agents over a live kanban board — each implementer works in its own Docker-sandboxed git worktree, reviews gate every branch, the merger resolves conflicts, and concurrent QA feeds new issues back onto the board.

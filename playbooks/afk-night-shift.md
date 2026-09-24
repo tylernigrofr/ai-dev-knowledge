@@ -10,9 +10,12 @@ concepts_used:
   - push-vs-pull-context
   - smart-zone-vs-dumb-zone
 tools: [sandcastle, opencode, claude-code]
-status: draft
-last_reviewed: 2026-05-06
+status: deprecated
+superseded_by: orchestrated-issue-waves
+last_reviewed: 2026-09-24
 ---
+
+> **Deprecated 2026-09-24.** Superseded by [orchestrated-issue-waves](orchestrated-issue-waves.md): same shape (queue → isolated implementers → review gate → merge), run from a supervised orchestrator session with native worktree subagents instead of a Sandcastle night shift. Model names below are from May 2026.
 
 ## Prerequisites
 

@@ -5,6 +5,8 @@ description: Use when the user wants to process accumulated material in _inbox/ 
 
 # triage-inbox
 
+**Write to the live KB repo only** — `$AI_KB_PATH`, or the current directory if it is the KB. Never edit the plugin cache under `~/.claude/plugins/`; it's a read-only snapshot. Run `python3 scripts/kb.py lint` before finishing.
+
 Batch-process the inbox.
 
 ## Inputs

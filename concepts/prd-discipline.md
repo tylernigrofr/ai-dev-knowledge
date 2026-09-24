@@ -6,7 +6,7 @@ tags: [prd, alignment, definition-of-done]
 sources: [sources/youtube/pocock-vibe-engineering-2025.md]
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -17,7 +17,7 @@ Alignment happens during grilling, not during PRD reading. Re-reading the AI's s
 
 ## How to apply
 - Always include an **Out of scope** section listing the negative decisions made during grilling. This is the definition of done.
-- After `/to-prd` generates the doc, **do not read it for correctness** — go straight to decomposition (`/to-issues`).
+- After `/to-spec` (formerly `/to-prd`) generates the doc, **do not read it for correctness** — go straight to decomposition (`/to-tickets`).
 - Skim only to confirm it loaded the conversation; spelling/structure don't matter.
 - Stop polishing at "actionable." More PRD effort has diminishing returns.
 - If the PRD feels wrong, the grilling was wrong — restart grilling, don't edit the PRD.

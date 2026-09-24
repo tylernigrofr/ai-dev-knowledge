@@ -7,9 +7,10 @@ sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/repos/pocock-skills.md
   - sources/articles/anthropic-claude-code-best-practices.md
+  - sources/repos/owner-practice-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -41,6 +42,7 @@ Anthropic's framing generalizes TDD's insight: *give the agent a machine-checkab
 Without a success criterion, the model produces plausible-looking output and the human becomes the only feedback loop.
 
 ## Caveats
+- **Who runs the tests is a separate choice.** In an orchestrated setup, one working ruling is that workers *write* tests (red-first by construction, naming what each pins) but never execute them; the orchestrator runs them at integration. That trades the worker's inner feedback loop for wall-clock and a single source of validation evidence. It suits a slow suite. It's wrong for exploratory or measurement work. Pocock's `/implement` keeps the classic loop: typecheck and single test files often, the full suite once at the end.
 - Pure refactors (no behavior change) are exempt; existing tests cover them.
 - Exploratory prototypes (see `three-route-prototype`) skip TDD by design — they're throwaway.
 

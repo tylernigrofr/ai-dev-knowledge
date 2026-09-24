@@ -8,7 +8,7 @@ sources:
   - sources/repos/pocock-skills.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -19,16 +19,16 @@ Specs-to-code regeneration loops fail because the code is the battleground and y
 
 ## How to apply
 - Use a `/grill-me` skill (or `/grill-with-docs` for engineering work that should update `CONTEXT.md` and ADRs inline).
-- **One question at a time, each with a recommended answer.** Wait for feedback before continuing — never batch.
-- **If a question can be answered by exploring the codebase, explore instead of asking.** The user shouldn't have to look up what the code already knows.
+- **Ask in rounds over the design tree's frontier, each question with a recommended answer.** A round is every decision whose prerequisites are already settled, numbered. Wait for answers, recompute the frontier, and ask the next round. A question that depends on another open question waits for a later round. (Pocock's 2026 `grilling` primitive. It replaced "one question at a time".)
+- **Facts are the agent's job; decisions are the user's.** If a question needs a fact from the environment, dispatch a subagent to find it rather than asking. Keep asking the rest of the frontier while it runs.
 - **Challenge user terms against `CONTEXT.md` in real time.** "Your glossary defines X as A, but you seem to mean B — which is it?"
 - **Sharpen fuzzy or overloaded terms.** Propose a precise canonical name when the user says "account" but means Customer-vs-User.
 - **Stress-test relationships with concrete scenarios.** Invent edge cases that probe the boundary between concepts and force precision.
 - **Cross-reference with code.** If the user states how something works and the code disagrees, surface the contradiction.
 - **Update `CONTEXT.md` inline** as terms resolve — don't batch.
 - **Offer ADRs sparingly** — only when all three apply: hard to reverse, surprising without context, real trade-off (see [adr-discipline](adr-discipline.md)).
-- Stop when novelty dies (three consecutive low-novelty questions) or you hit ~40 questions.
-- Summarize into a PRD with a `/to-prd` skill — but **do not review the PRD afterward**. You already aligned.
+- Done when the frontier is empty: every branch visited, nothing silently assumed, and the user confirms shared understanding.
+- Summarize into a spec with `/to-spec` (formerly `/to-prd`), then `/to-tickets`. Keep grill → spec → tickets in one unbroken context, and **don't review the spec afterward**: you already aligned.
 - Include an out-of-scope section in the PRD to capture negative decisions (the definition of done).
 - Pull in domain experts when grilling hits a question only they can answer.
 

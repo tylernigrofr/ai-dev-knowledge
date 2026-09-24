@@ -6,7 +6,7 @@ tags: [exploration, abstraction, mental-map, domain-glossary]
 sources: [sources/repos/pocock-skills.md]
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -23,6 +23,7 @@ Agents (and engineers) default to depth-first exploration: open the file, follow
 
 ## Caveats
 - Only as good as the domain glossary. With no `CONTEXT.md`, you get generic module names and the technique loses most of its value.
+- Pocock removed `/zoom-out` from his skills in 2026 because it "went unused in practice" — the move is now usually a subagent exploration or the survey step of `/improve-codebase-architecture`. The idea still holds; the dedicated command doesn't earn its slot.
 - For tiny codebases, zoom-out is overkill — depth-first is fine when the whole map fits in your head.
 
 ## Related

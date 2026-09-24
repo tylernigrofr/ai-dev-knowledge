@@ -5,6 +5,7 @@ url: https://github.com/mattpocock/skills
 author: Matt Pocock
 published: 2026-01-01
 captured: 2026-05-06
+recaptured: 2026-09-24   # v1.2.3, see bottom section
 status: extracted
 concepts_seeded:
   - diagnose-loop
@@ -110,3 +111,24 @@ Pocock organizes the skills around four common agent failure modes:
 
 - "These skills are designed to be small, easy to adapt, and composable. They work with any model. Hack around with them. Make them your own."
 - Pocock cites: Pragmatic Programmer, DDD, Philosophy of Software Design, Extreme Programming Explained, TDD by Example.
+
+## Update — v1.2.3 (recaptured 2026-09-24)
+
+Now ships as a Claude Code plugin (`/plugin install mattpocock-skills`, official marketplace, auto-updates) **or** as editable copies via `npx skills@latest add mattpocock/skills`. README: "Pick one: installing both leaves you with every skill twice."
+
+**Renames / removals:** `to-prd` → `to-spec`; `to-issues` → `to-tickets`; `diagnose` → `diagnosing-bugs`; `decision-mapping` → `wayfinder`; in-progress `review` → `code-review`; `write-a-skill`/`writing-great-skills` → `writing-for-agents`. `zoom-out` and `caveman` **removed** ("zoom-out went unused in practice"). `grilling` extracted as the shared interview primitive under `grill-me`, `grill-with-docs`, `triage`, `wayfinder`, `improve-codebase-architecture`. New: `implement`, `wayfinder`, `code-review`, `domain-modeling`, `codebase-design`, `research`, `resolving-merge-conflicts`, `wizard`, `handoff`, `ask-matt` (router), `to-questionnaire`, `wait-what`.
+
+**Main flow (from `ask-matt`):** `/grill-with-docs` → (optional `/prototype` detour, bridged by `/handoff`) → multi-session? `/to-spec` → `/to-tickets` → `/implement` per ticket, `/clear` between tickets : `/implement` in place. `/implement` drives `/tdd` at pre-agreed seams, runs typecheck/single tests often and the full suite once, then `/code-review` (Standards + Spec axes, parallel subagents) before committing.
+- Keep grill → spec → tickets in **one unbroken context**; each `/implement` starts fresh from its ticket.
+- On-ramps: `/triage` for issues *you didn't create* (don't triage `/to-tickets` output — it's agent-ready by construction); `/diagnosing-bugs` for breakage; `/wayfinder` for efforts too big for one session (produces decisions, not deliverables; hands off to `/to-spec`).
+- Codebase health: `/improve-codebase-architecture` "whenever you have a spare moment"; a picked candidate becomes an idea that re-enters at `/grill-with-docs`.
+
+**Smart zone:** "~150k tokens on state-of-the-art models" (was ~100k).
+
+**Phase boundaries (`ask-matt/PHASE-BOUNDARIES.md`):** decide only *at* a boundary; mid-phase, continue or split into subagents ("compacting mid-phase makes the agent lose the thread"). Ordered tree, first yes wins: (1) Continue if the next phase needs this one as a primary source or it fits in the remaining smart zone; (2) `/clear` if the context is irrelevant to what's next; (3) `/handoff` only for a new harness, new directory, a colleague, or forking a side task mid-phase; (4) subagent if the task can run AFK (automated review is the standard case); (5) otherwise `/compact <instruction>` — "the default, not the first reach". Every move except Continue turns a primary source into a lossy secondary source.
+
+**`/to-tickets`:** tracer-bullet tickets, each sized for one fresh context window, each declaring **blocking edges**; on a real tracker, publish blockers-first and use native blocking / sub-issue links, label `ready-for-agent`. Work the **frontier** (tickets whose blockers are all done). Wide refactors are the exception to vertical slicing: sequence as **expand → migrate in batches → contract**. No file paths or code snippets in tickets (they go stale), except decision-rich snippets from a prototype.
+
+**`/prototype`:** logic branch is now a single shareable HTML file (free-play + guided walkthroughs) instead of a terminal app. "Throwaway is a constraint on how the code is written, not a promise to destroy it": the prototype is kept on a `prototype/<name>` branch as a primary source, pointed at from the implementation issue.
+
+**`implement-spec` (in-progress, 2026-08) — Pocock's orchestrator pattern.** Tickets are a task graph with a frontier. One branch + draft PR closing the spec and tickets. An optional exploration subagent writes notes to a directory outside the repo that all later subagents read. One implementer subagent per ticket, each in its own worktree and branch, run in the background for maximum concurrency; a **merger subagent** merges each finished branch into the PR branch; when the frontier changes, dispatch more. Communicate sparsely via **context pointers** (spec, tickets, notes, commits), not duplicated content. At the end: one `/code-review`, one fix subagent, mark PR ready, clean up worktrees.

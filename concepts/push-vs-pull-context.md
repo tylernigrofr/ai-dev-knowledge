@@ -7,9 +7,11 @@ sources:
   - sources/youtube/pocock-vibe-engineering-2025.md
   - sources/articles/anthropic-context-engineering.md
   - sources/articles/anthropic-claude-code-best-practices.md
+  - sources/repos/owner-practice-2026.md
+  - sources/articles/claude-code-orchestration-docs-2026.md
 status: stable
 superseded_by: null
-last_reviewed: 2026-05-06
+last_reviewed: 2026-09-24
 ---
 
 ## Summary
@@ -42,6 +44,9 @@ What doesn't belong:
 - File-by-file codebase descriptions
 
 Check CLAUDE.md into git; treat it like code — review when Claude's behavior goes wrong, prune on a schedule.
+
+### CLAUDE.md as an entry pointer
+A structure that scales to a large repo: `CLAUDE.md` holds one short paragraph per topic, each stating the non-negotiable rule and ending with "See `docs/agents/<topic>.md`". The detail files are pulled on demand. `AGENTS.md` points Codex at the same files, so every harness shares one instruction set (AGENTS.md is now a cross-vendor standard, and Claude Code reads it as a fallback). Durable preferences live in these files. Changing task state lives in the issue tracker, never in conversation memory.
 
 ## Caveats
 - An implementer that fails to pull a relevant skill is worse than one with the skill pushed. Monitor pull behavior; if a skill is missed often, consider pushing it.
