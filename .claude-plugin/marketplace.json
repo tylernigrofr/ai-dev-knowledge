@@ -1,16 +1,17 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ai-dev-knowledge",
-  "version": "0.2.0",
-  "description": "Curated knowledge base of AI-driven development practices, packaged as a Claude Code plugin.",
   "owner": {
     "name": "Tyler Nigro",
     "url": "https://github.com/tylernigrofr"
   },
+  "metadata": {
+    "description": "Curated knowledge base of AI-driven development practices, packaged as a Claude Code plugin.",
+    "version": "0.2.0"
+  },
   "plugins": [
     {
       "name": "ai-dev-knowledge",
-      "description": "On-demand retrieval skills (kb-search, kb-pull) and KB maintenance skills (triage-inbox, distill-concept, add-source, build-index) for the ai-dev-knowledge knowledge base.",
+      "description": "On-demand retrieval skills (kb-search, kb-pull) and KB maintenance skills (triage-inbox, distill-concept, add-source, build-index, rebuild-frontmatter) for the ai-dev-knowledge knowledge base.",
       "source": "./",
       "category": "knowledge"
     }
